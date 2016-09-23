@@ -13,10 +13,16 @@ export default function(state = DEFAULT_STATE, action) {
         onLogging: true
       }
 
-    case actionTypes.UPDATE_USERNAME:
+    case actionTypes.UPDATE_LOGIN_USERNAME:
       return {
         ...state,
         username: action.username
+      }
+
+    case actionTypes.UPDATE_LOGIN_PASSWORD:
+      return {
+        ...state,
+        password: action.password
       }
 
     default:
@@ -27,4 +33,5 @@ export default function(state = DEFAULT_STATE, action) {
 export const getLogin = (state) => ({
   onLogging: state.onLogging,
   username: state.username,
+  password: state.password,
 })

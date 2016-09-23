@@ -4,6 +4,6 @@
 // import { Actions } from 'react-native-router-flux'
 
 // Action creators
-export const skeleton = () => {
-  console.log('Skeleton')
+export const home = () => {
+  console.log('Home')
 }

@@ -1,11 +1,8 @@
 // @flow
-import Login from './Login'
+import Home from './Home'
 import { connect } from 'react-redux'
 import * as actions from './actions' // mapDispatchToProps
-import {
-  getLogin,
-  getNav,
-} from '../../reducers/rootReducer'
+import { getNav, getLogin } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
 // const mapDispatchToProps = {
@@ -20,4 +17,4 @@ const mapStateToProps = (state) => ({
   ...getLogin(state),
 })
 
-export default connect(mapStateToProps, actions)(Login)
+export default connect(mapStateToProps, actions)(Home)

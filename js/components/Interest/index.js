@@ -1,23 +1,19 @@
 // @flow
-import Register from './Register'
+import Interest from './Interest'
 import { connect } from 'react-redux'
 import * as actions from './actions' // mapDispatchToProps
-
-import {
-  getLogin,
-  getNav,
-  getRegister,
-} from '../../reducers/rootReducer'
+import { getNav } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
 // const mapDispatchToProps = {
-//   ...actionsLogin,
+//   ...actionsDuplicate,
 //   ...actions,
 // }
 
+// export default connect(mapStateToProps, mapDispatchToProps)(Login)
+
 const mapStateToProps = (state) => ({
   ...getNav(state),
-  ...getRegister(state),
 })
 
-export default connect(mapStateToProps, actions)(Register)
+export default connect(mapStateToProps, actions)(Interest)

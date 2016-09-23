@@ -8,9 +8,11 @@ import {
 
 class InputNormal extends Component {
   static propTypes = {
-    style: React.PropTypes.object,
+    keyboardType: React.PropTypes.string,
     placeholder: React.PropTypes.string,
     onChangeText: React.PropTypes.func,
+    secureTextEntry: React.PropTypes.bool,
+    style: React.PropTypes.object,
   }
 
   render() {
@@ -20,13 +22,15 @@ class InputNormal extends Component {
 
     return (
       <TextInput
-        style={{fontWeight: 'bold', height: 20.5, color: '#999999'}}
+        autoCorrect={false}
+        keyboardType={pr.keyboardType ? pr.keyboardType : 'default'}
+        onChangeText={pr.onChangeText}
         placeholderStyle={{fontWeight: 'bold'}}
         placeholderTextColor='#999999'
         placeholder={pr.placeholder}
-        onChangeText={pr.onChangeText}
+        secureTextEntry={pr.secureTextEntry ? pr.secureTextEntry : false}
+        style={{fontWeight: 'bold', height: 20.5, color: '#999999', width: 100}}
         value={value}
-        keyboardType={pr.keyboardType ? pr.keyboardType : "default"}
       />
     );
   }
