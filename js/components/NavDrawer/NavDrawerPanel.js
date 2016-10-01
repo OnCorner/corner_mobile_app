@@ -8,21 +8,27 @@ import {
 } from "react-native";
 import { Actions } from 'react-native-router-flux';
 
+const contextTypes = {
+  drawer: React.PropTypes.object,
+}
+
 const NavDrawerPanel = (props, context) => {
+  console.log(context)
+
   const drawer = context.drawer;
+
   return (
     <View style={styles.container}>
-      <TouchableHighlight>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.home();}}>
         <Text style={styles.button}>Home</Text>
       </TouchableHighlight>
       <TouchableHighlight>
         <Text style={styles.button}>Shop</Text>
       </TouchableHighlight>
-      <TouchableHighlight>
-        <Text style={styles.button}>Discover</Text>
-      </TouchableHighlight>
-      <TouchableHighlight>
-        <Text style={styles.button}>Sell</Text>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.discover();}}>
+        <Text style={styles.button}>
+          Discover
+        </Text>
       </TouchableHighlight>
     </View>
   )
@@ -40,5 +46,7 @@ const styles = StyleSheet.create({
     color: '#AAAAAA'
   },
 })
+
+NavDrawerPanel.contextTypes = contextTypes;
 
 export default NavDrawerPanel

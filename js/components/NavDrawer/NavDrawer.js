@@ -10,11 +10,15 @@ import NavDrawerPanel from './NavDrawerPanel'
 export default class NavDrawer extends Component {
 
   componentDidMount() {
-      Actions.refresh({key: 'drawer', ref: this.refs.navigation});
+    Actions.refresh({
+      key: 'drawer',
+      ref: this.refs.navigation
+    })
   }
 
   render() {
-    const { navigationState: { children } } = this.props;
+    const state = this.props.navigationState;
+    const children = state.children;
 
     console.log(this.props)
 
@@ -22,7 +26,9 @@ export default class NavDrawer extends Component {
       <Drawer
         ref="navigation"
         type="displace"
-        content={<NavDrawerPanel />}
+        onOpen={() => Actions.refresh({ key: state.key, open: true })}
+        onClose={() => Actions.refresh({ key: state.key, open: false })}
+        content={<NavDrawerPanel/>}
         tapToClose
         openDrawerOffset={0.2}
         panCloseMask={0.2}

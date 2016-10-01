@@ -47,7 +47,7 @@ export default class Login extends Component {
             secureTextEntry={true}
             value={this.props.password}
           />
-          <TouchableHighlight onPress={Actions.main}>
+          <TouchableHighlight onPress={Actions.drawer}>
             <Text style={styles.button}>
               Login
             </Text>
