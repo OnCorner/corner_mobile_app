@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 // import s from '../../../public/assets/style/global'
-// style={Style.text1}
+// style={s.text1}
 import InputNormal from '../../elements/InputNormal'
 
 export default class Login extends Component {
@@ -47,7 +47,7 @@ export default class Login extends Component {
             secureTextEntry={true}
             value={this.props.password}
           />
-          <TouchableHighlight onPress={Actions.home}>
+          <TouchableHighlight onPress={Actions.main}>
             <Text style={styles.button}>
               Login
             </Text>

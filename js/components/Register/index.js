@@ -2,7 +2,6 @@
 import Register from './Register'
 import { connect } from 'react-redux'
 import * as actions from './actions' // mapDispatchToProps
-
 import {
   getLogin,
   getNav,

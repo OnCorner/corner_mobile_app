@@ -1,8 +1,8 @@
 // @flow
-import Login from './Login'
+import Skeleton from './Skeleton'
 import { connect } from 'react-redux'
 import * as actions from './actions' // mapDispatchToProps
-import { getNav, getLogin } from '../../reducers/rootReducer'
+import { getNav } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
 // const mapDispatchToProps = () => ({
@@ -14,7 +14,6 @@ import { getNav, getLogin } from '../../reducers/rootReducer'
 
 const mapStateToProps = (state) => ({
   ...getNav(state),
-  ...getLogin(state),
 })
 
-export default connect(mapStateToProps, actions)(Login)
+export default connect(mapStateToProps, actions)(Skeleton)
