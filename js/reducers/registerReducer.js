@@ -43,6 +43,12 @@ export default function(state = DEFAULT_STATE, action) {
         success: true,
       }
 
+    case actionTypes.UPDATE_USER:
+      return {
+        ...state,
+        user: action.user
+      }
+
     default:
       return state
   }
@@ -55,4 +61,5 @@ export const getRegister = (state) => ({
   newLastName: state.lastName,
   newPassword: state.password,
   registerSuccess: state.success,
+  user: state.user
 })

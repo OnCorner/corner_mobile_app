@@ -23,7 +23,7 @@ export default class Register extends Component {
   }
 
   _handleUsername(text) {
-    this.props.updateRegisterUsername(text)
+    this.props.updateLoginUsername(text)
     // this.props.updateLoginUsername(text)
   }
 
@@ -40,7 +40,7 @@ export default class Register extends Component {
   }
 
   _handlePassword(text) {
-    this.props.updateRegisterPassword(text)
+    this.props.updateLoginPassword(text)
   }
 
   _handleRegisterUser() {
@@ -59,14 +59,14 @@ export default class Register extends Component {
   }
 
   render() {
-
+    console.log("props", this.props);
     return (
       <View style={styles.container}>
         <View style={styles.registerSheet}>
           <InputNormal
             onChangeText={this._handleUsername}
             placeholder='Username'
-            value={this.props.newUsername}
+            value={this.props.username}
           />
           <InputNormal
             onChangeText={this._handleEmail}
@@ -87,7 +87,7 @@ export default class Register extends Component {
             onChangeText={this._handlePassword}
             placeholder='Password'
             secureTextEntry={true}
-            value={this.props.newPassword}
+            value={this.props.password}
           />
           <TouchableHighlight onPress={this._handleRegisterUser}>
             <Text style={styles.button}>Continue</Text>

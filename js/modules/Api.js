@@ -109,5 +109,5 @@ function chooseUrl(routeType) {
 
 var Api = module.exports = {
   server: new Route(Url.localhost),
-  baseUrl: window.location.port == '8080' ? Url.localhost : Url.cornerProd,
+  // baseUrl: window.location.port == '8080' ? Url.localhost : Url.cornerProd,
 }

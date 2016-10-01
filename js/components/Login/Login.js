@@ -18,6 +18,7 @@ export default class Login extends Component {
 
     this._handleUsername = this._handleUsername.bind(this);
     this._handlePassword = this._handlePassword.bind(this);
+    this._handleLoginUser = this._handleLoginUser.bind(this);
   }
 
   _handleUsername(text) {
@@ -26,6 +27,15 @@ export default class Login extends Component {
 
   _handlePassword(text) {
     this.props.updateLoginPassword(text)
+  }
+
+  _handleLoginUser() {
+    const { username, password } = this.props
+    loginInfo = {
+      username: username,
+      password: password
+    }
+    this.props.handleLoginUser(loginInfo)
   }
 
   render() {
@@ -47,7 +57,7 @@ export default class Login extends Component {
             secureTextEntry={true}
             value={this.props.password}
           />
-          <TouchableHighlight onPress={Actions.main}>
+          <TouchableHighlight onPress={this._handleLoginUser}>
             <Text style={styles.button}>
               Login
             </Text>
