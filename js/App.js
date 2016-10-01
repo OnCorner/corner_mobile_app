@@ -9,6 +9,7 @@ import {
   Actions,
   Router,
   Scene,
+  Modal,
 } from 'react-native-router-flux'
 
 import configureStore from './store/configureStore'

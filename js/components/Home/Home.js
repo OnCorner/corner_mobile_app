@@ -37,7 +37,7 @@ export default class Home extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log("Home props", this.props)
 
     return (
       <View style={s.container}>

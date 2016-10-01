@@ -53,3 +53,19 @@ export const handleLoginUser = (loginInfo) => {
     })
   }
 }
+
+export const checkSession = () => {
+  return dispatch => {
+    return AsyncStorage.getItem('token')
+    .then((token) => {
+      return Api.server.post('session', {token: token});
+    })
+    .then((user) => {
+      dispatch(registerActions.updateUserInfo(user))
+      return true;
+    })
+    .catch((err) => {
+      return false;
+    })
+  }
+}

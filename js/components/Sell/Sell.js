@@ -284,7 +284,6 @@ export default class Sell extends Component {
   }
 
   render() {
-
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
