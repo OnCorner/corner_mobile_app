@@ -4,8 +4,11 @@ import {
   ListView,
   Text,
   View,
+  TouchableHighlight,
+  AsyncStorage,
 } from 'react-native'
 import ImagePicker from 'react-native-image-picker';
+import { Actions } from 'react-native-router-flux'
 
 import s from '../../../public/assets/styles/global'
 import HomeFeedRow from './HomeFeedRow'
@@ -36,11 +39,21 @@ export default class Home extends Component {
     )
   }
 
+  logout() {
+    AsyncStorage.removeItem('token')
+    .then(() => {
+      Actions.login()
+    })
+  }
+
   render() {
-    console.log(this.props)
+    console.log("Home props", this.props)
 
     return (
       <View style={s.container}>
+        <TouchableHighlight onPress={this.logout.bind(this)}>
+          <Text style={{color: 'white'}}>Logout</Text>
+        </TouchableHighlight>
         <ListView
           dataSource={this.props.itemsDataSource}
           enableEmptySections={true}

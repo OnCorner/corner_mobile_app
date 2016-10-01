@@ -24,6 +24,7 @@ class InputNormal extends Component {
       <TextInput
         autoCorrect={false}
         keyboardType={pr.keyboardType ? pr.keyboardType : 'default'}
+        autoCapitalize={pr.autoCapitalize ? pr.autoCapitalize : 'none'}
         onChangeText={pr.onChangeText}
         placeholderStyle={{fontWeight: 'bold'}}
         placeholderTextColor='#999999'

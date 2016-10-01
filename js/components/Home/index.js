@@ -6,6 +6,7 @@ import {
   getLogin,
   getNav,
   getSell,
+  getRegister,
 } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
@@ -18,6 +19,7 @@ import {
 
 const mapStateToProps = (state) => ({
   ...getLogin(state),
+  ...getRegister(state),
   ...getNav(state),
   ...getSell(state),
 })

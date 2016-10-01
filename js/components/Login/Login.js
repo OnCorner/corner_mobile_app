@@ -16,8 +16,24 @@ export default class Login extends Component {
   constructor() {
     super()
 
+    this.state = {
+      isPendingSession: true
+    }
+
     this._handleUsername = this._handleUsername.bind(this);
     this._handlePassword = this._handlePassword.bind(this);
+    this._handleLoginUser = this._handleLoginUser.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.checkSession()
+    .then((success) => {
+      if(success) {
+        Actions.main()
+      } else {
+        this.setState({isPendingSession: false});
+      }
+    });
   }
 
   _handleUsername(text) {
@@ -28,38 +44,52 @@ export default class Login extends Component {
     this.props.updateLoginPassword(text)
   }
 
-  render() {
+  _handleLoginUser() {
+    const { username, password } = this.props
+    loginInfo = {
+      username: username,
+      password: password
+    }
+    this.props.handleLoginUser(loginInfo)
+  }
 
-    return (
-      <Image
-        source={require('../../../public/assets/img/background.png')}
-        style={styles.backgroundImg}
-      >
-        <View style={styles.container}>
-          <InputNormal
-            onChangeText={this._handleUsername}
-            placeholder='Username'
-            value={this.props.username}
-          />
-          <InputNormal
-            onChangeText={this._handlePassword}
-            placeholder='Password'
-            secureTextEntry={true}
-            value={this.props.password}
-          />
-          <TouchableHighlight onPress={Actions.drawer}>
-            <Text style={styles.button}>
-              Login
-            </Text>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={Actions.register}>
-            <Text style={styles.button}>
-              Register
-            </Text>
-          </TouchableHighlight>
-        </View>
-      </Image>
-    )
+  render() {
+    if(this.state.isPendingSession) {
+      return (
+        <View style={styles.splashPage}></View>
+      );
+    } else {
+      return (
+        <Image
+          source={require('../../../public/assets/img/background.png')}
+          style={styles.backgroundImg}
+        >
+          <View style={styles.container}>
+            <InputNormal
+              onChangeText={this._handleUsername}
+              placeholder='Username'
+              value={this.props.username}
+            />
+            <InputNormal
+              onChangeText={this._handlePassword}
+              placeholder='Password'
+              secureTextEntry={true}
+              value={this.props.password}
+            />
+            <TouchableHighlight onPress={this._handleLoginUser}>
+              <Text style={styles.button}>
+                Login
+              </Text>
+            </TouchableHighlight>
+            <TouchableHighlight onPress={Actions.register}>
+              <Text style={styles.button}>
+                Register
+              </Text>
+            </TouchableHighlight>
+          </View>
+        </Image>
+      )
+    }
   }
 }
 
@@ -81,6 +111,12 @@ const styles = StyleSheet.create({
   },
   logo: {
     padding: 30
+  },
+  splashPage: {
+    flex: 1,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 })
 

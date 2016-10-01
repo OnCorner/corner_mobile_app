@@ -2,6 +2,7 @@
 import * as actionTypes from '../../actionTypes'
 import Api from '../../modules/Api'
 import { Actions } from 'react-native-router-flux'
+import { AsyncStorage } from 'react-native'
 
 // Action creators
 export const updateRegisterUsername = (text) => {
@@ -39,16 +40,22 @@ export const updateRegisterPassword = (text) => {
   }
 }
 
-export const registerUser = (registerInfo) => {
-  console.log(registerInfo)
+export const updateUserInfo = (user) => {
+  return {
+    type: actionTypes.UPDATE_USER,
+    user: user,
+  }
+}
 
+export const registerUser = (registerInfo) => {
   return dispatch => {
-    Api.server.create('user', registerInfo)
-    .then((user) => {
-      console.log(user);
+    Api.server.post('signup', registerInfo)
+    .then((signUpResponse) => {
+      AsyncStorage.setItem('token', signUpResponse.token);
       dispatch({
         type: actionTypes.REGISTER_USER
       })
+      dispatch(updateUserInfo(signUpResponse.user))
       Actions.interest()
     })
     .catch((error) => {
