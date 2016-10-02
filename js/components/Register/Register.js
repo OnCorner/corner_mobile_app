@@ -45,14 +45,14 @@ export default class Register extends Component {
 
   _handleRegisterUser() {
     // this.props.registerUser()
-    const { newUsername, newEmail, newFirstName, newLastName, newPassword } = this.props
+    const { username, newEmail, newFirstName, newLastName, password } = this.props
 
     registerInfo = {
-      username: newUsername,
+      username: username,
       email: newEmail,
       firstName: newFirstName,
       lastName: newLastName,
-      password: newPassword
+      password: password
     }
 
     this.props.registerUser(registerInfo)
