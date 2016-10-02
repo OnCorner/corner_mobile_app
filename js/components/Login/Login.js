@@ -46,10 +46,12 @@ export default class Login extends Component {
 
   _handleLoginUser() {
     const { username, password } = this.props
+
     loginInfo = {
       username: username,
       password: password
     }
+
     this.props.handleLoginUser(loginInfo)
   }
 
