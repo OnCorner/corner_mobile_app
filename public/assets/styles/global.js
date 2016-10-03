@@ -43,6 +43,13 @@ Style.rowContainer = {
   paddingBottom: 15,
 }
 
+Style.topRowContainer = {
+  alignItems: 'center',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  paddingBottom: 15,
+}
+
 Style.buttonContainerSilver = {
   borderWidth: 1,
   borderColor: '#AD985E',

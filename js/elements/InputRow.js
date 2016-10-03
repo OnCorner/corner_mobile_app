@@ -25,7 +25,7 @@ class InputRow extends Component {
         autoCorrect={false}
         keyboardType={pr.keyboardType ? pr.keyboardType : 'default'}
         onChangeText={pr.onChangeText}
-        placeholderTextColor='#D8D8D8'
+        placeholderTextColor={pr.placeholderTextColor ? pr.placeholderTextColor : '#AAAAAA'}
         placeholder={pr.placeholder}
         secureTextEntry={pr.secureTextEntry ? pr.secureTextEntry : false}
         style={[{

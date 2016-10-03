@@ -56,15 +56,15 @@ export default class HomeFeedRow extends Component {
           >
             <View style={styles.rowMain}>
               <Image
-                source={rowData.imgOne}
+                source={rowData.itemImgOne}
                 style={styles.thumb}
               />
               <View style={styles.textContainer}>
                 <View>
-                  <Text style={styles.brandText}>{rowData.brand}</Text>
-                  <Text style={styles.styleText}>{rowData.style}</Text>
-                  <Text style={styles.sizeText}>{rowData.size}</Text>
-                  <Text style={styles.priceText}>${rowData.price}</Text>
+                  <Text style={styles.brandText}>{rowData.itemBrand}</Text>
+                  <Text style={styles.styleText}>{rowData.itemStyle}</Text>
+                  <Text style={styles.sizeText}>{rowData.itemSize}</Text>
+                  <Text style={styles.priceText}>${rowData.itemPrice}</Text>
                 </View>
               </View>
             </View>

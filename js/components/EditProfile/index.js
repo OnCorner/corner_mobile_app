@@ -1,11 +1,8 @@
 // @flow
-import Discover from './Discover'
+import EditProfile from './EditProfile'
 import { connect } from 'react-redux'
 import * as actions from './actions' // mapDispatchToProps
-import {
-  getNav,
-  getCreateGroup
-} from '../../reducers/rootReducer'
+import { getNav } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
 // const mapDispatchToProps = () => ({
@@ -17,7 +14,6 @@ import {
 
 const mapStateToProps = (state) => ({
   ...getNav(state),
-  ...getCreateGroup(state),
 })
 
-export default connect(mapStateToProps, actions)(Discover)
+export default connect(mapStateToProps, actions)(EditProfile)

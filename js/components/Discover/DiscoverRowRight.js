@@ -20,9 +20,9 @@ export default class DiscoverRowRight extends Component {
         <View style={styles.rowInfo}>
           {/* Top section */}
           <View>
-            <Text style={styles.brandText}>{rowData.group}</Text>
-            <Text style={styles.followerText}>{rowData.followerNum} followers</Text>
-            <Text style={styles.likeText}>{rowData.likeNum} likes</Text>
+            <Text style={styles.brandText}>{rowData.groupName}</Text>
+            <Text style={styles.followerText}>00k followers</Text>
+            <Text style={styles.likeText}>00k likes</Text>
           </View>
           {/* Mid section */}
           <View>
@@ -31,8 +31,8 @@ export default class DiscoverRowRight extends Component {
           {/* Bottom section */}
           <View style={styles.rowInfoBottom}>
             <View>
-              <Text style={styles.adminText}>{rowData.admin}</Text>
-              <Text style={styles.moreInfoText}>{rowData.category} {rowData.timeStamp}</Text>
+              <Text style={styles.adminText}>Username</Text>
+              <Text style={styles.moreInfoText}>{rowData.groupCategory} 30d</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
               <TouchableHighlight

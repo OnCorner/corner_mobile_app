@@ -4,22 +4,19 @@ import nav, * as fromNav from './navReducer'
 import login, * as fromLogin from './loginReducer'
 import register, * as fromRegister from './registerReducer'
 import sell, * as fromSell from './sellReducer'
+import createGroup, * as fromCreateGroup from './createGroupReducer'
 
 export default combineReducers({
   nav,
   login,
   register,
   sell,
+  createGroup,
 })
 
 //Like getNav:nav
 export const getNav = (state) => fromNav.getNav(state.nav)
-
-//Like getLogin:login
 export const getLogin = (state) => fromLogin.getLogin(state.login)
-
-//Like getRegister:register
 export const getRegister = (state) => fromRegister.getRegister(state.register)
-
-//Like getSell:sell
 export const getSell = (state) => fromSell.getSell(state.sell)
+export const getCreateGroup = (state) => fromCreateGroup.getCreateGroup(state.createGroup)

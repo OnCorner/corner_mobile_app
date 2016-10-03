@@ -56,6 +56,7 @@ export default class DiscoverHeader extends Component {
         <ListView
           contentContainerStyle={styles.list}
           dataSource={this.state.dataSource}
+          enableEmptySections={true}
           renderRow={this._renderRow}
           horizontal={true}
           showsHorizontalScrollIndicator={false}

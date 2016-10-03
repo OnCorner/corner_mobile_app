@@ -125,6 +125,29 @@ export default function(state = DEFAULT_STATE, action) {
         dataSource: [action.item, ...state.dataSource]
       }
 
+    case actionTypes.EMPTY_ITEM_INPUTS:
+      return {
+        ...state,
+        title: '',
+        brand: '',
+        style: '',
+        size: '',
+        detail: '',
+        category: '',
+        group: '',
+        quantity: null,
+        condition: '',
+        price: null,
+        acceptOffer: null,
+        location: null,
+        meetUp: null,
+        shipping: null,
+        freeShipping: null,
+        imgOne: null,
+        imgTwo: null,
+        imgThree: null,
+      }
+
     default:
       return state
   }

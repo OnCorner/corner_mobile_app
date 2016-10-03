@@ -45,13 +45,18 @@ export default class Sell extends Component {
     //   avatarSourceTwo: "",
     //   avatarSourceThree: "",
     // }
+    console.log("symbol exists? "+(!!ImagePicker));
+
+    var derp = setInterval(function(){console.log("symbol exists? "+(!!ImagePicker)); if(ImagePicker!==undefined)clearInterval(derp);},5)
 
     this.state = {
       imageSelected: false
     }
 
-    this._addItem = this._addItem.bind(this)
     this._handleTitle = this._handleTitle.bind(this)
+    this._handleItemImgOne = this._handleItemImgOne.bind(this);
+    this._handleItemImgTwo = this._handleItemImgTwo.bind(this);
+    this._handleItemImgThree = this._handleItemImgThree.bind(this);
     this._handleBrand = this._handleBrand.bind(this)
     this._handleStyle = this._handleStyle.bind(this)
     this._handleSize = this._handleSize.bind(this)
@@ -66,9 +71,7 @@ export default class Sell extends Component {
     this._handleMeetUp = this._handleMeetUp.bind(this)
     this._handleShipping = this._handleShipping.bind(this)
     this._handleFreeShipping = this._handleFreeShipping.bind(this)
-    this._handleItemImgOne = this._handleItemImgOne.bind(this);
-    this._handleItemImgTwo = this._handleItemImgTwo.bind(this);
-    this._handleItemImgThree = this._handleItemImgThree.bind(this);
+    this._addItem = this._addItem.bind(this)
   }
 
   _handleItemImgOne() {
@@ -243,29 +246,32 @@ export default class Sell extends Component {
     } = this.props
 
     var item = {
-      title: sellItemTitle,
-      brand: sellItemBrand,
-      style: sellItemStyle,
-      size: sellItemSize,
-      detail: sellItemDetail,
-      category: sellItemCategory,
-      group: sellItemGroup,
-      quantity: sellItemQuantity,
-      condition: sellItemCondition,
-      price: sellItemPrice,
-      acceptOffer: sellItemAcceptOffer,
-      location: sellItemLocation,
-      meetUp: sellItemMeetUp,
-      shipping: sellItemShipping,
-      freeShipping: sellItemFreeShipping,
-      imgOne: sellItemImgOne,
-      imgTwo: sellItemImgTwo,
-      imgThree: sellItemImgThree,
+      itemTitle: sellItemTitle,
+      itemBrand: sellItemBrand,
+      itemStyle: sellItemStyle,
+      itemSize: sellItemSize,
+      itemDetail: sellItemDetail,
+      itemCategory: sellItemCategory,
+      itemGroup: sellItemGroup,
+      itemQuantity: sellItemQuantity,
+      itemCondition: sellItemCondition,
+      itemPrice: sellItemPrice,
+      itemAcceptOffer: sellItemAcceptOffer,
+      itemLocation: sellItemLocation,
+      itemMeetUp: sellItemMeetUp,
+      itemShipping: sellItemShipping,
+      itemFreeShipping: sellItemFreeShipping,
+      itemImgOne: sellItemImgOne,
+      itemImgTwo: sellItemImgTwo,
+      itemImgThree: sellItemImgThree,
     }
+
+    //CHANGE TO ITEMTITLE, ITEMBRAND, ITEMSTYLE, ETC.
 
     this.props.uploadItem(item)
     //When navigating to it would like to go back down vertically
     Actions.home(direction='vertical')
+    this.props.emptyItemInputs()
 
     //
     // var items = []
@@ -284,6 +290,7 @@ export default class Sell extends Component {
   }
 
   render() {
+
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -312,7 +319,7 @@ export default class Sell extends Component {
                 />
                 :
                 <View style={styles.imageContainer}>
-                  <Text style={{color: '#AD985E'}}> Add Photo </Text>
+                  <Text style={{color: '#AD985E'}}>Add Photo</Text>
                 </View>
               }
             </TouchableHighlight>
@@ -327,7 +334,7 @@ export default class Sell extends Component {
                 />
                 :
                 <View style={styles.imageContainer}>
-                  <Text style={{color: '#AD985E'}}> Add Photo </Text>
+                  <Text style={{color: '#AD985E'}}>Add Photo</Text>
                 </View>
               }
             </TouchableHighlight>
@@ -342,80 +349,80 @@ export default class Sell extends Component {
                 />
                 :
                 <View style={styles.imageContainer}>
-                  <Text style={{color: '#AD985E'}}> Add Photo </Text>
+                  <Text style={{color: '#AD985E'}}>Add Photo</Text>
                 </View>
               }
             </TouchableHighlight>
           </View>
           <InputBox
             onChangeText={this._handleDetail}
-            placeholder='Add a brief decription... e.g. Tried on once. Missing half a strand of goat hair.'
+            placeholder='Add a brief description... e.g. Tried on once. Missing half a strand of goat hair.'
             value={this.props.sellItemDetail}
           />
           <View style={s.separator}/>
           <View style={s.rowContainer}>
             <Text style={s.label}>Condition</Text>
-              <InputRow
-                placeholder='New'
-                onChangeText={this._handleCondition}
-                value={this.props.sellItemCondition}
-              />
+            <InputRow
+              placeholder='New'
+              onChangeText={this._handleCondition}
+              value={this.props.sellItemCondition}
+            />
           </View>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
             <Text style={s.label}>Brand</Text>
-              <InputRow
-                placeholder='Nike'
-                onChangeText={this._handleBrand}
-                value={this.props.sellItemBrand}
-              />
+            <InputRow
+              placeholder='Nike'
+              onChangeText={this._handleBrand}
+              value={this.props.sellItemBrand}
+            />
           </View>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
             <Text style={s.label}>Size</Text>
-              <InputRow
-                placeholder='M'
-                onChangeText={this._handleSize}
-                value={this.props.sellItemSize}
-              />
+            <InputRow
+              placeholder='M'
+              onChangeText={this._handleSize}
+              value={this.props.sellItemSize}
+            />
           </View>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
             <Text style={s.label}>Category</Text>
-              <InputRow
-                placeholder='Shoes'
-                onChangeText={this._handleCategory}
-                value={this.props.sellItemCategory}
-              />
+            <InputRow
+              placeholder='Shoes'
+              onChangeText={this._handleCategory}
+              value={this.props.sellItemCategory}
+            />
           </View>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
             <Text style={s.label}>Group</Text>
-              <InputRow
-                placeholder='Button'
-                onChangeText={this._handleGroup}
-                value={this.props.sellItemGroup}
-              />
+            <InputRow
+              placeholder='Button'
+              onChangeText={this._handleGroup}
+              value={this.props.sellItemGroup}
+            />
           </View>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
             <Text style={s.label}>Quantity</Text>
-              <InputRow
-                placeholder='Quantity'
-                keyboardType="number-pad"
-                onChangeText={this._handleQuantity}
-                value={this.props.sellItemQuantity}
-              />
+            <InputRow
+              placeholder='Quantity'
+              keyboardType="number-pad"
+              onChangeText={this._handleQuantity}
+              value={this.props.sellItemQuantity}
+            />
           </View>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
             <Text style={s.label}>Price</Text>
-              <InputRow
-                placeholder='$0'
-                keyboardType="number-pad"
-                onChangeText={this._handlePrice}
-                value={this.props.sellItemPrice}
-              />
+            <InputRow
+              placeholder='$0'
+              keyboardType="number-pad"
+              onChangeText={this._handlePrice}
+              value={this.props.sellItemPrice}
+            />
           </View>
         </View>
         {/*Shipping Methods*/}
@@ -432,11 +439,11 @@ export default class Sell extends Component {
           </Text>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
-            <Text style={s.label}>My Location</Text>
+            <Text style={s.label}>Location</Text>
             <InputRow
-              placeholder='ZIP Code'
               keyboardType="number-pad"
               onChangeText={this._handleLocation}
+              placeholder='ZIP Code'
               value={this.props.sellItemLocation}
             />
           </View>
@@ -522,9 +529,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginTop: 15,
-    marginBottom: 15,
   },
 })
 
 //Style modification
 //Style text input, make it look like keep typing probably switch textAlign only to left
+//Add social media sharing

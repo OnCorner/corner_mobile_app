@@ -141,6 +141,12 @@ export const uploadItem = (item) => {
   }
 }
 
+export const emptyItemInputs = () => {
+  return {
+    type: actionTypes.EMPTY_ITEM_INPUTS,
+  }
+}
+
 // export const registerUser = (registerInfo) => {
 //   console.log(registerInfo)
 //

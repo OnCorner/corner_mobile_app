@@ -22,12 +22,37 @@ const NavDrawerPanel = (props, context) => {
       <TouchableHighlight onPress={() => {drawer.close(); Actions.home();}}>
         <Text style={styles.button}>Home</Text>
       </TouchableHighlight>
-      <TouchableHighlight>
-        <Text style={styles.button}>Shop</Text>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.shop();}}>
+        <Text style={styles.button}>My Shop</Text>
       </TouchableHighlight>
       <TouchableHighlight onPress={() => {drawer.close(); Actions.discover();}}>
-        <Text style={styles.button}>
+        <Text style={[styles.button, {marginBottom: 15}]}>
           Discover
+        </Text>
+      </TouchableHighlight>
+      <TouchableHighlight>
+        <Text style={styles.button}>
+          Inbox
+        </Text>
+      </TouchableHighlight>
+      <TouchableHighlight>
+        <Text style={styles.button}>
+          Inventory
+        </Text>
+      </TouchableHighlight>
+      <TouchableHighlight>
+        <Text style={[styles.button, {marginBottom: 15}]}>
+          Transactions
+        </Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.creategroup();}}>
+        <Text style={styles.button}>
+          Create Group
+        </Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.editprofile();}}>
+        <Text style={styles.button}>
+          Edit Profile
         </Text>
       </TouchableHighlight>
     </View>

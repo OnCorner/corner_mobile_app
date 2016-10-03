@@ -30,11 +30,11 @@ export default class NavDrawer extends Component {
         onClose={() => Actions.refresh({ key: state.key, open: false })}
         content={<NavDrawerPanel/>}
         tapToClose
-        openDrawerOffset={0.2}
-        panCloseMask={0.2}
+        openDrawerOffset={0.5}
+        panCloseMask={0.5}
         negotiatePan
         tweenHandler={(ratio) => ({
-          main: { opacity: Math.max(0.54, 1 - ratio) },
+          main: { opacity: Math.max(1, 1 - ratio) },
         })}
       >
         <DefaultRenderer

@@ -21,6 +21,9 @@ import Interest from './components/Interest'
 import NavDrawer from './components/NavDrawer'
 import Sell from './components/Sell'
 import Discover from './components/Discover'
+import CreateGroup from './components/CreateGroup'
+import EditProfile from './components/EditProfile'
+import Shop from './components/Shop'
 
 const RouterWithRedux = connect()(Router)
 const store = configureStore()
@@ -32,6 +35,7 @@ export default class App extends Component {
   // </Scene>
 
   render() {
+
     return (
       <Provider store={store}>
         <RouterWithRedux>
@@ -57,10 +61,31 @@ export default class App extends Component {
                   title='Sell'
                 />
                 <Scene
+                  component={Shop}
+                  key='shop'
+                  sceneStyle={s.bgColor}
+                  title='Shop'
+                  type='reset'
+                />
+                <Scene
                   component={Discover}
                   key='discover'
                   sceneStyle={s.bgColor}
                   title='Discover'
+                  type='reset'
+                />
+                <Scene
+                  component={CreateGroup}
+                  key='creategroup'
+                  sceneStyle={s.bgColor}
+                  title='Create Group'
+                  type='reset'
+                />
+                <Scene
+                  component={EditProfile}
+                  key='editprofile'
+                  sceneStyle={s.bgColor}
+                  title='Edit Profile'
                   type='reset'
                 />
               </Scene>

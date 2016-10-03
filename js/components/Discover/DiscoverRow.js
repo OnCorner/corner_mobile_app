@@ -47,18 +47,18 @@ export default class DiscoverRow extends Component {
         {/* Main swipe */}
         <View style={{flex: 1, padding: 15}}>
           <View>
-            <TouchableHighlight onPress={()=>{this._navigate(route.group, rowData)}}>
+            <TouchableHighlight>
               <Image
-                source={rowData.image}
+                source={rowData.groupImgOne}
                 style={styles.groupThumb}
               />
             </TouchableHighlight>
             <View style={styles.rowGroupContainer}>
               <View>
-                <Text style={styles.groupText}>{rowData.group}</Text>
+                <Text style={styles.groupText}>{rowData.groupName}</Text>
 
                 <TouchableHighlight onPress={null}>
-                  <Text style={styles.admin}>{rowData.admin}</Text>
+                  <Text style={styles.admin}>Username</Text>
                 </TouchableHighlight>
               </View>
             </View>

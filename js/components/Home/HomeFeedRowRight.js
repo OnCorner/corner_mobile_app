@@ -35,20 +35,20 @@ export default class HomeFeedRowRight extends Component {
         <View style={styles.rowInfo}>
           {/* Top section */}
           <View>
-            <Text style={styles.brandText}>{rowData.brand}</Text>
-            <Text style={styles.styleText}>{rowData.style}</Text>
-            <Text style={styles.sizeText}>{rowData.size}</Text>
-            <Text style={styles.priceText}>${rowData.price}</Text>
+            <Text style={styles.brandText}>{rowData.itemBrand}</Text>
+            <Text style={styles.styleText}>{rowData.itemStyle}</Text>
+            <Text style={styles.sizeText}>{rowData.itemSize}</Text>
+            <Text style={styles.priceText}>${rowData.itemPrice}</Text>
           </View>
           {/* Mid section */}
           <View>
-          <Text style={styles.detailText}>{rowData.detail}</Text>
+          <Text style={styles.detailText}>{rowData.itemDetail}</Text>
           </View>
           {/* Bottom section */}
           <View style={styles.rowInfoBottom}>
             <View>
-              <Text style={styles.usernameText}>{rowData.username}</Text>
-              <Text style={styles.categoryText}>{rowData.category} {rowData.timeStamp}</Text>
+              <Text style={styles.usernameText}>{rowData.itemUsername}</Text>
+              <Text style={styles.categoryText}>{rowData.itemCategory} {rowData.itemTimeStamp}</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
               <TouchableHighlight

@@ -6,7 +6,7 @@ import {
   TextInput,
 } from 'react-native';
 
-class InputBox extends Component {
+export default class InputBox extends Component {
   static propTypes = {
     keyboardType: React.PropTypes.string,
     placeholder: React.PropTypes.string,
@@ -26,7 +26,7 @@ class InputBox extends Component {
         keyboardType={pr.keyboardType ? pr.keyboardType : 'default'}
         multiline={true}
         onChangeText={pr.onChangeText}
-        placeholderTextColor='#D8D8D8'
+        placeholderTextColor='#AAAAAA'
         placeholder={pr.placeholder}
         secureTextEntry={pr.secureTextEntry ? pr.secureTextEntry : false}
         style={[{
@@ -35,11 +35,10 @@ class InputBox extends Component {
           fontSize: 15,
           height: 50,
           marginBottom: 15,
+          marginTop: 15,
         }, style]}
         value={value}
       />
     );
   }
 }
-
-export default InputBox
