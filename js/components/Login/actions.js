@@ -38,13 +38,11 @@ export const updateLoginPassword = (text) => {
 }
 
 export const handleLoginUser = (loginInfo) => {
+
   return dispatch => {
     Api.server.post('login', loginInfo)
     .then((loginResponse) => {
       AsyncStorage.setItem('token', loginResponse.token);
-      dispatch({
-        type: actionTypes.LOGIN_USER
-      })
       dispatch(registerActions.updateUserInfo(loginResponse.user))
       Actions.drawer()
     })

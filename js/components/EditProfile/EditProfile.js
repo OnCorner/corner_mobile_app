@@ -54,17 +54,22 @@ export default class EditProfile extends Component {
       imageSelected: false
     }
 
-    this._handleName = this._handleName.bind(this)
-    this._handleGroupImg = this._handleGroupImg.bind(this);
-    this._handleDetail = this._handleDetail.bind(this)
-    this._handleCategory = this._handleCategory.bind(this)
-    this._handleRelatedGroups = this._handleRelatedGroups.bind(this)
-    this._handlePrivate = this._handlePrivate.bind(this)
-    this._handlePrivateConditions = this._handlePrivateConditions.bind(this)
-    this._addGroup = this._addGroup.bind(this)
+    this._handleShopName = this._handleShopName.bind(this)
+    this._handleShopImg = this._handleShopImg.bind(this);
+    this._handleShopDetail = this._handleShopDetail.bind(this)
+    this._handleUsername = this._handleUsername.bind(this)
+    this._handleEmail = this._handleEmail.bind(this)
+    this._handleFullName = this._handleFullName.bind(this)
+    this._handleMyLocation = this._handleMyLocation.bind(this)
+    this._SubmitEdit = this._SubmitEdit.bind(this)
   }
 
-  _handleGroupImg() {
+  componentWillMount() {
+    console.log('Populating profile page')
+    console.log(this.props.user)
+  }
+
+  _handleShopImg() {
     console.log(ImagePicker)
 
     ImagePicker.showImagePicker(options, (response) => {
@@ -90,63 +95,72 @@ export default class EditProfile extends Component {
           const source = {uri: response.uri, isStatic: true};
         }
 
-        this.props.updateGroupImg(source)
+        this.props.updateShopImg(source)
       }
     })
   }
 
-  _handleName(text) {
-    this.props.updateGroupName(text)
+  _handleShopName(text) {
+    this.props.updateShopName(text)
   }
 
-  _handleDetail(text) {
-    this.props.updateGroupDetail(text)
+  _handleShopDetail(text) {
+    this.props.updateShopDetail(text)
   }
 
-  _handleCategory(text) {
-    this.props.updateGroupCategory(text)
+  _handleUsername(text) {
+    this.props.updateUsername(text)
   }
 
-  _handleRelatedGroups(text) {
-    this.props.updateGroupRelatedGroups(text)
+  _handleEmail(text) {
+    this.props.updateUserEmail(text)
   }
 
-  _handlePrivate(value) {
-    this.props.updateGroupPrivate(value)
+  _handleFullName(text) {
+    this.props.updateUserFullName(text)
   }
 
-  _handlePrivateConditions(text) {
-    this.props.updateGroupPrivateConditions(text)
+  _handleMyLocation(value) {
+    this.props.updateUserLocation(value)
   }
 
-  _addGroup() {
+  _SubmitEdit() {
     const {
-      groupName,
-      groupDetail,
-      groupCategory,
-      groupRelatedGroups,
-      groupPrivate,
-      groupPrivateConditions,
-      groupImgOne,
+      updatedUserShopName,
+      updatedUserShopImg,
+      updatedUserShopDetail,
+      updatedUserUsername,
+      updatedUserEmail,
+      updatedUserFullName,
+      updatedUserLocation,
+      updatedUserInfo,
     } = this.props
 
-    var group = {
-      groupName: groupName,
-      groupDetail: groupDetail,
-      groupCategory: groupCategory,
-      groupRelatedGroups: groupRelatedGroups,
-      groupPrivate: groupPrivate,
-      groupPrivateConditions: groupPrivateConditions,
-      groupImgOne: groupImgOne,
+    var userEdit = {
+      updatedUserShopName: updatedUserShopName,
+      updatedUserShopImg: updatedUserShopImg,
+      updatedUserShopDetail: updatedUserShopDetail,
+      updatedUserUsername: updatedUserUsername,
+      updatedUserEmail: updatedUserEmail,
+      updatedUserFullName: updatedUserFullName,
+      updatedUserLocation: updatedUserLocation,
+      updatedUserUserInfo: updatedUserUserInfo,
     }
 
-    this.props.uploadGroup(group)
+    this.props.submitProfileEdit(userEdit)
     //When navigating to it would like to go back down vertically
     Actions.discover(direction='vertical')
-    this.props.emptyGroupInputs()
+    // this.props.emptyGroupInputs()
   }
 
   render() {
+    const {
+      username,
+      email,
+      firstName,
+      lastName,
+      zip,
+    } = this.props.user
 
     return (
       <View style={styles.container}>
@@ -155,21 +169,21 @@ export default class EditProfile extends Component {
           <View style={s.topRowContainer}>
             <Text style={s.label}>Shop Name</Text>
             <InputRow
-              onChangeText={this._handleName}
+              onChangeText={this._handleShopName}
               placeholder='Shop Name'
-              value={this.props.groupName}
+              value={this.props.updatedUserShopName}
             />
           </View>
           <View style={s.separator}/>
           <View style={styles.imageCollectionContainer}>
             <TouchableHighlight
-              onPress={this._handleGroupImg}
+              onPress={this._handleShopImg}
               style={styles.imageButton}
               underlayColor='transparent'
             >
               {this.state.imageSelected ?
                 <Image
-                  source={this.props.groupImgOne} style={styles.uploadAvatar}
+                  source={this.props.updatedUserShopImg} style={styles.uploadAvatar}
                 />
                 :
                 <View style={styles.imageContainer}>
@@ -178,29 +192,40 @@ export default class EditProfile extends Component {
               }
             </TouchableHighlight>
           </View>
-
           <InputBox
-            onChangeText={this._handleDetail}
+            onChangeText={this._handleShopDetail}
             placeholder='Add a brief description for your shop... e.g. Selling only Supreme.'
-            value={this.props.groupDetail}
+            value={this.props.updatedUserShopDetail}
           />
           <View style={s.separator}/>
           <View style={s.rowContainer}>
             <Text style={s.label}>Username</Text>
             <InputRow
+              defaultValue={username}
               placeholder='wavypapi777'
-              onChangeText={this._handleCategory}
-              value={this.props.groupCategory}
+              onChangeText={this._handleUsername}
+              value={this.props.updatedUserUsername}
+            />
+          </View>
+          <View style={s.separator}/>
+          <View style={s.rowContainer}>
+            <Text style={s.label}>Email</Text>
+            <InputRow
+              defaultValue={email}
+              placeholder='email'
+              onChangeText={this._handleEmail}
+              value={this.props.updatedUserEmail}
             />
           </View>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
             <Text style={s.label}>Full Name</Text>
             <InputRow
+              defaultValue={`${firstName} ${lastName}`}
               placeholder='Jae Woneezy'
-              onChangeText={this._handleRelatedGroups}
-              value={this.props.groupRelatedGroups}
               placeholderTextColor='#AD985E'
+              onChangeText={this._handleFullName}
+              value={this.props.updatedUserFullName}
             />
           </View>
           <View style={s.separator}/>
@@ -208,27 +233,25 @@ export default class EditProfile extends Component {
             <Text style={s.label}>My Location</Text>
             <InputRow
               keyboardType="number-pad"
-              onChangeText={this._handleLocation}
+              onChangeText={this._handleMyLocation}
               placeholder='00000'
-              value={this.props.sellItemLocation}
+              value={this.props.updatedUserLocation}
             />
           </View>
+       {/*<View style={s.separator}/>
+          <View style={s.rowContainer}>
+            <Text style={s.label}>Contact Number</Text>
+            <InputRow
+              keyboardType="number-pad"
+              onChangeText={this._handleLocation}
+              placeholder='111-111-1111'
+              value={this.props.sellItemLocation}
+            />
+          </View>*/}
           <View style={s.separator}/>
-          {this.props.groupPrivate ?
-            <View>
-              <InputBox
-                onChangeText={this._handlePrivateConditions}
-                placeholder='Place conditions for joining... e.g. Must correctly answer 3 group related questions via email.'
-                value={this.props.groupPrivateConditions}
-              />
-              <View style={s.separator}/>
-            </View>
-            :
-            null
-          }
           <View style={[s.rowContainer, {justifyContent: 'flex-end'}]}>
             <TouchableHighlight
-              onPress={this._addGroup}
+              onPress={this._SubmitEdit}
               style={s.buttonContainerSilver}
             >
               <Text style={s.buttonTextSilver}>Done</Text>

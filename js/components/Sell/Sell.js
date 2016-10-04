@@ -439,7 +439,7 @@ export default class Sell extends Component {
           </Text>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
-            <Text style={s.label}>Location</Text>
+            <Text style={s.label}>Item Location</Text>
             <InputRow
               keyboardType="number-pad"
               onChangeText={this._handleLocation}

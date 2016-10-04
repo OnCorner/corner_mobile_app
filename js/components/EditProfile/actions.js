@@ -8,64 +8,58 @@ import * as actionTypes from '../../actionTypes'
 import Api from '../../modules/Api'
 
 // Action creators
-export const updateGroupName = (text) => {
+export const updateShopName = (text) => {
   return {
-    type: actionTypes.UPDATE_GROUP_NAME,
-    name: text,
+    type: actionTypes.UPDATE_USER_SHOP_NAME,
+    shopName: text,
   }
 }
 
-export const updateGroupDetail = (text) => {
+export const updateShopImg = (value) => {
   return {
-    type: actionTypes.UPDATE_GROUP_DETAIL,
-    detail: text,
+    type: actionTypes.UPDATE_USER_SHOP_IMG,
+    shopImg: value,
   }
 }
 
-export const updateGroupCategory = (text) => {
+export const updateShopDetail = (text) => {
   return {
-    type: actionTypes.UPDATE_GROUP_CATEGORY,
-    category: text,
+    type: actionTypes.UPDATE_USER_SHOP_DETAIL,
+    shopDetail: text,
   }
 }
 
-export const updateGroupRelatedGroups = (text) => {
+export const updateUsername = (text) => {
   return {
-    type: actionTypes.UPDATE_GROUP_RELATED_GROUPS,
-    relatedGroups: text,
+    type: actionTypes.UPDATE_USER_USERNAME,
+    username: text,
   }
 }
 
-export const updateGroupPrivate = (value) => {
+export const updateUserEmail = (text) => {
   return {
-    type: actionTypes.UPDATE_GROUP_PRIVATE,
-    private: value,
+    type: actionTypes.UPDATE_USER_EMAIL,
+    email: text,
   }
 }
 
-export const updateGroupPrivateConditions = (text) => {
+export const updateUserFullName = (text) => {
   return {
-    type: actionTypes.UPDATE_GROUP_PRIVATE_CONDITIONS,
-    privateConditions: text,
+    type: actionTypes.UPDATE_USER_FULL_NAME,
+    fullName: text,
   }
 }
 
-export const updateGroupImg = (value) => {
+export const updateUserLocation = (value) => {
   return {
-    type: actionTypes.UPDATE_GROUP_IMG_ONE,
-    imgOne: value,
+    type: actionTypes.UPDATE_USER_LOCATION,
+    location: value,
   }
 }
 
-export const uploadGroup = (group) => {
+export const submitProfileEdit = (userEdit) => {
   return {
-    type: actionTypes.UPLOAD_GROUP,
-    group: group,
-  }
-}
-
-export const emptyGroupInputs = () => {
-  return {
-    type: actionTypes.EMPTY_GROUP_INPUTS,
+    type: actionTypes.SUBMIT_PROFILE_EDIT,
+    userEdit: userEdit,
   }
 }

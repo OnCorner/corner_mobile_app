@@ -29,11 +29,11 @@ export default class Login extends Component {
     this.props.checkSession()
     .then((success) => {
       if(success) {
-        Actions.main()
+        Actions.drawer()
       } else {
         this.setState({isPendingSession: false});
       }
-    });
+    })
   }
 
   _handleUsername(text) {
@@ -78,7 +78,7 @@ export default class Login extends Component {
               secureTextEntry={true}
               value={this.props.password}
             />
-            <TouchableHighlight onPress={Actions.drawer}>
+            <TouchableHighlight onPress={this._handleLoginUser}>
               <Text style={styles.button}>
                 Login
               </Text>

@@ -26,7 +26,7 @@ export default class InterestHeader extends Component {
             Select 3 groups from our suggestions to begin
           </Text>
           <TouchableHighlight
-            onPress={Actions.home}
+            onPress={Actions.drawer}
             underlayColor='transparent'
           >
             <Text style={styles.goButton}>LIFT OFF!</Text>

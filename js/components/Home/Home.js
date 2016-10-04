@@ -33,6 +33,11 @@ export default class Home extends Component {
     // }
   }
 
+  componentWillMount() {
+    console.log('Printing out user info')
+    console.log(this.props.user)
+  }
+
   _renderRow(rowData){
     return (
       <HomeFeedRow rowData={rowData} {...this.props}/>
@@ -47,7 +52,6 @@ export default class Home extends Component {
   }
 
   render() {
-    console.log("Home props", this.props)
 
     return (
       <View style={s.container}>

@@ -13,8 +13,6 @@ const contextTypes = {
 }
 
 const NavDrawerPanel = (props, context) => {
-  console.log(context)
-
   const drawer = context.drawer;
 
   return (
