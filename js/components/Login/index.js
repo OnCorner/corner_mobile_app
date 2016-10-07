@@ -1,6 +1,7 @@
 // @flow
-import Login from './Login'
 import { connect } from 'react-redux'
+
+import Login from './Login'
 import * as actions from './actions' // mapDispatchToProps
 import {
   getLogin,

@@ -24,14 +24,27 @@ import Discover from './components/Discover'
 import CreateGroup from './components/CreateGroup'
 import EditProfile from './components/EditProfile'
 import Shop from './components/Shop'
+import Settings from './components/Settings'
+import Item from './components/Item'
 
 const RouterWithRedux = connect()(Router)
 const store = configureStore()
 
 export default class App extends Component {
 
-  // <Scene key='drawer' component={NavDrawer}>
-  //   <Scene component={Home} initial={true} key='home' title='Home' type='reset'/>
+  // <Scene
+  //   component={Home}
+  //   initial={true}
+  //   key='home'
+  //   sceneStyle={s.bgColor}
+  //   title='Home'
+  //   type='reset'
+  // >
+  //   <Scene
+  //     component={Item}
+  //     key='item'
+  //     sceneStyle={s.bgColor}
+  //   />
   // </Scene>
 
   render() {
@@ -40,7 +53,7 @@ export default class App extends Component {
       <Provider store={store}>
         <RouterWithRedux>
           <Scene key='root'>
-            <Scene component={Login} hideNavBar initial={true} key='login' sceneStyle={s.bgColor} title='Login'/>
+            <Scene component={Login} hideNavBar initial={true} key='login' sceneStyle={s.bgColor} title='Login' type='reset'/>
             <Scene component={Register} direction='vertical' hideNavBar={false} key='register' sceneStyle={s.bgColor} title='Register'/>
             <Scene component={Interest} key='interest' sceneStyle={s.bgColor} title='Interest'/>
             <Scene key='drawer' component={NavDrawer} open={false}>
@@ -86,6 +99,13 @@ export default class App extends Component {
                   key='editprofile'
                   sceneStyle={s.bgColor}
                   title='Edit Profile'
+                  type='reset'
+                />
+                <Scene
+                  component={Settings}
+                  key='settings'
+                  sceneStyle={s.bgColor}
+                  title='Settings'
                   type='reset'
                 />
               </Scene>

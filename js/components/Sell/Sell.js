@@ -264,6 +264,7 @@ export default class Sell extends Component {
       itemImgOne: sellItemImgOne,
       itemImgTwo: sellItemImgTwo,
       itemImgThree: sellItemImgThree,
+      itemUsername: this.props.user.username,
     }
 
     //CHANGE TO ITEMTITLE, ITEMBRAND, ITEMSTYLE, ETC.

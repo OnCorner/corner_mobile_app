@@ -25,6 +25,13 @@ export default function(state = DEFAULT_STATE, action) {
         password: action.password
       }
 
+    case actionTypes.EMPTY_LOGIN_INPUTS:
+      return {
+        ...state,
+        username: '',
+        password: '',
+      }
+
     default:
       return state
   }

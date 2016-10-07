@@ -12,9 +12,7 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native'
-import {
-  Actions,
-} from 'react-native-router-flux'
+import { Actions } from 'react-native-router-flux'
 import ImagePicker from 'react-native-image-picker'
 var Platform = require('react-native').Platform
 
@@ -138,6 +136,7 @@ export default class CreateGroup extends Component {
       groupPrivate: groupPrivate,
       groupPrivateConditions: groupPrivateConditions,
       groupImgOne: groupImgOne,
+      groupAdmin: this.props.user.username,
     }
 
     this.props.uploadGroup(group)
@@ -147,6 +146,7 @@ export default class CreateGroup extends Component {
   }
 
   render() {
+    console.log(this.props)
 
     return (
       <View style={styles.container}>

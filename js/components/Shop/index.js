@@ -1,8 +1,12 @@
 // @flow
-import Shop from './Shop'
 import { connect } from 'react-redux'
+
+import Shop from './Shop'
 import * as actions from './actions' // mapDispatchToProps
-import { getNav } from '../../reducers/rootReducer'
+import {
+  getNav,
+  getSell,
+} from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
 // const mapDispatchToProps = () => ({
@@ -14,6 +18,7 @@ import { getNav } from '../../reducers/rootReducer'
 
 const mapStateToProps = (state) => ({
   ...getNav(state),
+  ...getSell(state),
 })
 
 export default connect(mapStateToProps, actions)(Shop)

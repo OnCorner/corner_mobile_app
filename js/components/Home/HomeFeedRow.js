@@ -6,7 +6,8 @@ import {
   Text,
   TouchableHighlight,
   View,
-} from 'react-native';
+} from 'react-native'
+import { Actions } from 'react-native-router-flux'
 import Swiper from 'react-native-swiper'
 
 import HomeFeedRowLeft from './HomeFeedRowLeft'
@@ -51,7 +52,7 @@ export default class HomeFeedRow extends Component {
         {/* Main swipe */}
         <View style={styles.rowContainer}>
           <TouchableHighlight
-            onPress={this._navigate}
+            onPress={Actions.item}
             underlayColor='transparent'
           >
             <View style={styles.rowMain}>

@@ -49,8 +49,13 @@ const NavDrawerPanel = (props, context) => {
         </Text>
       </TouchableHighlight>
       <TouchableHighlight onPress={() => {drawer.close(); Actions.editprofile();}}>
-        <Text style={styles.button}>
+        <Text style={[styles.button, {marginBottom: 15}]}>
           Edit Profile
+        </Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.settings();}}>
+        <Text style={styles.button}>
+          Settings
         </Text>
       </TouchableHighlight>
     </View>

@@ -1,6 +1,7 @@
 // @flow
-import Discover from './Discover'
 import { connect } from 'react-redux'
+
+import Discover from './Discover'
 import * as actions from './actions' // mapDispatchToProps
 import {
   getNav,

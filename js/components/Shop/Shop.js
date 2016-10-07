@@ -26,7 +26,7 @@ export default class Shop extends Component {
   }
 
   render() {
-    var tabStyle = this.props.tabStyle
+    const {itemsDataSource, tabStyle} = this.props
 
     return (
       <View style={styles.container}>
@@ -51,7 +51,7 @@ export default class Shop extends Component {
             fontSize: 13
           }}
         >
-          <ShopItems tabLabel='Items'/>
+          <ShopItems tabLabel='Items' itemsDataSource={itemsDataSource}/>
           <ShopFollowing tabLabel='Following'/>
           <ShopRating tabLabel='Rating 4.9'/>
         </ScrollableTabView>

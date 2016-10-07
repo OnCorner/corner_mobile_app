@@ -15,17 +15,6 @@ export default class ShopItems extends Component {
     super()
 
     this._renderRow = this._renderRow.bind(this);
-
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
-    this.state = {
-      selected: false,
-      dataSource: ds.cloneWithRows([
-        {style: 'shoes', brand: 'diamonds'},
-        {style: 'shoes', brand: 'dancin'},
-        {style: 'shoes', brand: 'getit'},
-      ])
-    }
   }
 
   _renderRow(rowData){
@@ -34,11 +23,11 @@ export default class ShopItems extends Component {
         <TouchableHighlight underlayColor='transparent'>
           <View>
             <Image
-              source={rowData.image}
+              source={rowData.itemImgOne}
               style={styles.groupImage}
             />
-            <Text style={styles.styleText}>{rowData.style}</Text>
-            <Text style={styles.priceText}>${rowData.price}</Text>
+            <Text style={styles.styleText}>{rowData.itemStyle}</Text>
+            <Text style={styles.priceText}>${rowData.itemPrice}</Text>
           </View>
         </TouchableHighlight>
       </View>
@@ -46,11 +35,12 @@ export default class ShopItems extends Component {
   }
 
   render() {
+    const {itemsDataSource} = this.props
 
     return (
       <ListView
         contentContainerStyle={styles.list}
-        dataSource={this.state.dataSource}
+        dataSource={itemsDataSource}
         enableEmptySections={true}
         renderRow={this._renderRow}
       />

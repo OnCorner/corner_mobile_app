@@ -17,6 +17,9 @@ Style.navbar = {
   backgroundColor: 'black',
   height: 55,
   borderBottomWidth: 0,
+  flex: 1,
+  justifyContent: 'center',
+  flexDirection: 'row',
 }
 
 Style.bgColor = {
@@ -33,6 +36,13 @@ Style.label = {
   fontSize: 15,
   fontFamily: 'Helvetica Neue',
   flex: 2,
+}
+
+Style.buttonLabel = {
+  color: '#AD985E',
+  fontSize: 15,
+  fontFamily: 'Helvetica Neue',
+  flex: 1,
 }
 
 Style.rowContainer = {

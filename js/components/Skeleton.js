@@ -7,7 +7,7 @@ import {
 
 export default class Skeleton extends Component {
   constructor() {
-    super();
+    super()
   }
 
   render() {

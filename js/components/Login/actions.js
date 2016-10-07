@@ -1,11 +1,12 @@
 // @flow
-import * as actionTypes from '../../actionTypes'
-import { getLogin } from '../../reducers/rootReducer'
-import Api from '../../modules/Api'
-import * as registerActions from '../Register/actions'
+// import * as registerActions from '../Register/actions'
 import { AsyncStorage } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 
+import * as actionTypes from '../../actionTypes'
+import Api from '../../modules/Api'
+import * as actionsUserInfo from '../Util/userInfoActions'
+import { getLogin } from '../../reducers/rootReducer'
 // Action creators
 // export const login = () => {
 //   Actions.loginTwo
@@ -37,17 +38,23 @@ export const updateLoginPassword = (text) => {
   }
 }
 
-export const handleLoginUser = (loginInfo) => {
+export const emptyLoginInputs = () => {
+  return {
+    type: actionTypes.EMPTY_LOGIN_INPUTS,
+  }
+}
 
+export const loginUser = (loginInfo) => {
   return dispatch => {
     Api.server.post('login', loginInfo)
     .then((loginResponse) => {
-      AsyncStorage.setItem('token', loginResponse.token);
-      dispatch(registerActions.updateUserInfo(loginResponse.user))
+      AsyncStorage.setItem('token', loginResponse.token)
+      dispatch(actionsUserInfo.updateUserInfo(loginResponse.user))
+      dispatch(emptyLoginInputs())
       Actions.drawer()
     })
     .catch((error) => {
-      console.log("Error: ", error)
+      console.log('Error: ', error)
     })
   }
 }
@@ -56,14 +63,14 @@ export const checkSession = () => {
   return dispatch => {
     return AsyncStorage.getItem('token')
     .then((token) => {
-      return Api.server.post('session', {token: token});
+      return Api.server.post('session', {token: token})
     })
     .then((user) => {
-      dispatch(registerActions.updateUserInfo(user))
-      return true;
+      dispatch(actionsUserInfo.updateUserInfo(user))
+      return true
     })
     .catch((err) => {
-      return false;
+      return false
     })
   }
 }

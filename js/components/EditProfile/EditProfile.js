@@ -46,20 +46,22 @@ export default class EditProfile extends Component {
     //   avatarSourceThree: "",
     // }
 
-    console.log("symbol exists? "+(!!ImagePicker));
-
-    var derp = setInterval(function(){console.log("symbol exists? "+(!!ImagePicker)); if(ImagePicker!==undefined)clearInterval(derp);},5)
+    // console.log("symbol exists? "+(!!ImagePicker));
+    //
+    // var derp = setInterval(function(){console.log("symbol exists? "+(!!ImagePicker)); if(ImagePicker!==undefined)clearInterval(derp);},5)
 
     this.state = {
       imageSelected: false
     }
 
     this._handleShopName = this._handleShopName.bind(this)
-    this._handleShopImg = this._handleShopImg.bind(this);
+    this._handleShopImage = this._handleShopImage.bind(this);
     this._handleShopDetail = this._handleShopDetail.bind(this)
     this._handleUsername = this._handleUsername.bind(this)
     this._handleEmail = this._handleEmail.bind(this)
-    this._handleFullName = this._handleFullName.bind(this)
+    // this._handleFullName = this._handleFullName.bind(this)
+    this._handleFirstName = this._handleFirstName.bind(this)
+    this._handleLastName = this._handleLastName.bind(this)
     this._handleMyLocation = this._handleMyLocation.bind(this)
     this._SubmitEdit = this._SubmitEdit.bind(this)
   }
@@ -69,7 +71,7 @@ export default class EditProfile extends Component {
     console.log(this.props.user)
   }
 
-  _handleShopImg() {
+  _handleShopImage() {
     console.log(ImagePicker)
 
     ImagePicker.showImagePicker(options, (response) => {
@@ -95,7 +97,7 @@ export default class EditProfile extends Component {
           const source = {uri: response.uri, isStatic: true};
         }
 
-        this.props.updateShopImg(source)
+        this.props.updateShopImage(source)
       }
     })
   }
@@ -116,8 +118,16 @@ export default class EditProfile extends Component {
     this.props.updateUserEmail(text)
   }
 
-  _handleFullName(text) {
-    this.props.updateUserFullName(text)
+  // _handleFullName(text) {
+  //   this.props.updateUserFullName(text)
+  // }
+
+  _handleFirstName(text) {
+    this.props.updateUserFirstName(text)
+  }
+
+  _handleLastName(text) {
+    this.props.updateUserLastName(text)
   }
 
   _handleMyLocation(value) {
@@ -125,41 +135,42 @@ export default class EditProfile extends Component {
   }
 
   _SubmitEdit() {
-    const {
-      updatedUserShopName,
-      updatedUserShopImg,
-      updatedUserShopDetail,
-      updatedUserUsername,
-      updatedUserEmail,
-      updatedUserFullName,
-      updatedUserLocation,
-      updatedUserInfo,
-    } = this.props
+    // const {
+    //   updatedUserShopName,
+    //   updatedUserShopImage,
+    //   updatedUserShopDetail,
+    //   updatedUserUsername,
+    //   updatedUserEmail,
+    //   updatedUserFullName,
+    //   updatedUserLocation,
+    //   updatedUserInfo,
+    // } = this.props
+    //
+    // var userEdit = {
+    //   updatedUserShopName: updatedUserShopName,
+    //   updatedUserShopImage: updatedUserShopImage,
+    //   updatedUserShopDetail: updatedUserShopDetail,
+    //   updatedUserUsername: updatedUserUsername,
+    //   updatedUserEmail: updatedUserEmail,
+    //   updatedUserFullName: updatedUserFullName,
+    //   updatedUserLocation: updatedUserLocation,
+    //   updatedUserUserInfo: updatedUserUserInfo,
+    // }
 
-    var userEdit = {
-      updatedUserShopName: updatedUserShopName,
-      updatedUserShopImg: updatedUserShopImg,
-      updatedUserShopDetail: updatedUserShopDetail,
-      updatedUserUsername: updatedUserUsername,
-      updatedUserEmail: updatedUserEmail,
-      updatedUserFullName: updatedUserFullName,
-      updatedUserLocation: updatedUserLocation,
-      updatedUserUserInfo: updatedUserUserInfo,
-    }
-
-    this.props.submitProfileEdit(userEdit)
-    //When navigating to it would like to go back down vertically
-    Actions.discover(direction='vertical')
+    this.props.submitProfileEdit(this.props.user)
     // this.props.emptyGroupInputs()
   }
 
   render() {
     const {
+      shopName,
+      shopImage,
+      shopDetail,
       username,
       email,
       firstName,
       lastName,
-      zip,
+      location,
     } = this.props.user
 
     return (
@@ -171,19 +182,19 @@ export default class EditProfile extends Component {
             <InputRow
               onChangeText={this._handleShopName}
               placeholder='Shop Name'
-              value={this.props.updatedUserShopName}
+              value={shopName}
             />
           </View>
           <View style={s.separator}/>
           <View style={styles.imageCollectionContainer}>
             <TouchableHighlight
-              onPress={this._handleShopImg}
+              onPress={this._handleShopImage}
               style={styles.imageButton}
               underlayColor='transparent'
             >
               {this.state.imageSelected ?
                 <Image
-                  source={this.props.updatedUserShopImg} style={styles.uploadAvatar}
+                  source={shopImage} style={styles.uploadAvatar}
                 />
                 :
                 <View style={styles.imageContainer}>
@@ -195,7 +206,7 @@ export default class EditProfile extends Component {
           <InputBox
             onChangeText={this._handleShopDetail}
             placeholder='Add a brief description for your shop... e.g. Selling only Supreme.'
-            value={this.props.updatedUserShopDetail}
+            value={shopDetail}
           />
           <View style={s.separator}/>
           <View style={s.rowContainer}>
@@ -204,7 +215,7 @@ export default class EditProfile extends Component {
               defaultValue={username}
               placeholder='wavypapi777'
               onChangeText={this._handleUsername}
-              value={this.props.updatedUserUsername}
+              value={username}
             />
           </View>
           <View style={s.separator}/>
@@ -214,18 +225,27 @@ export default class EditProfile extends Component {
               defaultValue={email}
               placeholder='email'
               onChangeText={this._handleEmail}
-              value={this.props.updatedUserEmail}
+              value={email}
             />
           </View>
           <View style={s.separator}/>
           <View style={s.rowContainer}>
-            <Text style={s.label}>Full Name</Text>
+            <Text style={s.label}>First Name</Text>
             <InputRow
-              defaultValue={`${firstName} ${lastName}`}
-              placeholder='Jae Woneezy'
-              placeholderTextColor='#AD985E'
-              onChangeText={this._handleFullName}
-              value={this.props.updatedUserFullName}
+              defaultValue={firstName}
+              placeholder='Lyle'
+              onChangeText={this._handleFirstName}
+              value={firstName}
+            />
+          </View>
+          <View style={s.separator}/>
+          <View style={s.rowContainer}>
+            <Text style={s.label}>Last Name</Text>
+            <InputRow
+              defaultValue={lastName}
+              placeholder='Mane'
+              onChangeText={this._handleLastName}
+              value={lastName}
             />
           </View>
           <View style={s.separator}/>
@@ -235,7 +255,7 @@ export default class EditProfile extends Component {
               keyboardType="number-pad"
               onChangeText={this._handleMyLocation}
               placeholder='00000'
-              value={this.props.updatedUserLocation}
+              value={location}
             />
           </View>
        {/*<View style={s.separator}/>

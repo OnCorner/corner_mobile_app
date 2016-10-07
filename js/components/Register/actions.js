@@ -1,8 +1,10 @@
 // @flow
-import * as actionTypes from '../../actionTypes'
-import Api from '../../modules/Api'
 import { Actions } from 'react-native-router-flux'
 import { AsyncStorage } from 'react-native'
+
+import * as actionTypes from '../../actionTypes'
+import Api from '../../modules/Api'
+import * as actionsUserInfo from '../Util/userInfoActions'
 
 // Action creators
 export const updateRegisterUsername = (text) => {
@@ -40,13 +42,6 @@ export const updateRegisterPassword = (text) => {
   }
 }
 
-export const updateUserInfo = (user) => {
-  return {
-    type: actionTypes.UPDATE_USER,
-    user: user,
-  }
-}
-
 export const registerUser = (registerInfo) => {
   return dispatch => {
     Api.server.post('signup', registerInfo)
@@ -55,7 +50,7 @@ export const registerUser = (registerInfo) => {
       dispatch({
         type: actionTypes.REGISTER_USER
       })
-      dispatch(updateUserInfo(signUpResponse.user))
+      dispatch(actionsUserInfo.updateUserInfo(signUpResponse.user))
       Actions.interest()
     })
     .catch((error) => {

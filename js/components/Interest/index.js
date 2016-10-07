@@ -1,6 +1,7 @@
 // @flow
-import Interest from './Interest'
 import { connect } from 'react-redux'
+
+import Interest from './Interest'
 import * as actions from './actions' // mapDispatchToProps
 import { getNav } from '../../reducers/rootReducer'
 

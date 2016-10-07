@@ -52,7 +52,7 @@ export default class Login extends Component {
       password: password
     }
 
-    this.props.handleLoginUser(loginInfo)
+    this.props.loginUser(loginInfo)
   }
 
   render() {

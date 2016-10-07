@@ -1,14 +1,15 @@
 // @flow
-import Skeleton from './Skeleton'
 import { connect } from 'react-redux'
+
+import Skeleton from './Skeleton'
 import * as actions from './actions' // mapDispatchToProps
 import { getNav } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
-// const mapDispatchToProps = () => ({
+// const mapDispatchToProps = {
 //   ...actionsDuplicate,
 //   ...actions,
-// })
+// }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Login)
 

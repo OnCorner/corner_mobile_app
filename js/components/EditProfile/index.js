@@ -1,23 +1,25 @@
 // @flow
-import EditProfile from './EditProfile'
 import { connect } from 'react-redux'
+
+import EditProfile from './EditProfile'
 import * as actions from './actions' // mapDispatchToProps
+import * as actionsUserInfo from '../Util/userInfoActions'
 import {
   getNav,
-  getRegister,
+  getUserInfo,
 } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
-// const mapDispatchToProps = () => ({
-//   ...actionsDuplicate,
-//   ...actions,
-// })
+const mapDispatchToProps = {
+  ...actions,
+  ...actionsUserInfo,
+}
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Login)
 
 const mapStateToProps = (state) => ({
   ...getNav(state),
-  ...getRegister(state),
+  ...getUserInfo(state)
 })
 
-export default connect(mapStateToProps, actions)(EditProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile)

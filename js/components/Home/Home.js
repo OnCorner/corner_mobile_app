@@ -40,24 +40,14 @@ export default class Home extends Component {
 
   _renderRow(rowData){
     return (
-      <HomeFeedRow rowData={rowData} {...this.props}/>
+      <HomeFeedRow rowData={rowData}/>
     )
-  }
-
-  logout() {
-    AsyncStorage.removeItem('token')
-    .then(() => {
-      Actions.login()
-    })
   }
 
   render() {
 
     return (
       <View style={s.container}>
-        <TouchableHighlight onPress={this.logout.bind(this)}>
-          <Text style={{color: 'white'}}>Logout</Text>
-        </TouchableHighlight>
         <ListView
           dataSource={this.props.itemsDataSource}
           enableEmptySections={true}

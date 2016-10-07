@@ -1,6 +1,7 @@
 // @flow
-import Group from './Group'
 import { connect } from 'react-redux'
+
+import Group from './Group'
 import * as actions from './actions' // mapDispatchToProps
 import { getNav } from '../../reducers/rootReducer'
 

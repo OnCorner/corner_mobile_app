@@ -143,7 +143,7 @@ export default function(state = DEFAULT_STATE, action) {
         meetUp: null,
         shipping: null,
         freeShipping: null,
-        imgOne: null,
+        // imgOne: null,
         imgTwo: null,
         imgThree: null,
       }
