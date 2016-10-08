@@ -14,12 +14,12 @@ Style.container = {
 }
 
 Style.navbar = {
-  backgroundColor: 'black',
+  backgroundColor: 'pink',
   height: 55,
   borderBottomWidth: 0,
   flex: 1,
   justifyContent: 'center',
-  flexDirection: 'row',
+  alignItems: 'center',
 }
 
 Style.bgColor = {
