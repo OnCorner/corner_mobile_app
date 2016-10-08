@@ -72,10 +72,8 @@ export const submitProfileEdit = (editedUserInfo) => {
 
   return dispatch => {
     Api.server.update('user', editedUserInfo, editedUserInfo.id)
-    .then((userUpdateResponse) => {
-      console.log(up)
-      console.log(userUpdateResponse)
-      dispatch(updateUserInfo(userUpdateResponse.user))
+    .then((updatedUser) => {
+      dispatch(updateUserInfo(updatedUser))
       //When navigating to it would like to go back down vertically
       Actions.shop(direction='vertical')
     })

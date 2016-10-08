@@ -157,7 +157,32 @@ export default class EditProfile extends Component {
     //   updatedUserUserInfo: updatedUserUserInfo,
     // }
 
-    this.props.submitProfileEdit(this.props.user)
+    const {
+      id,
+      shopName,
+      shopImage,
+      shopDetail,
+      username,
+      email,
+      firstName,
+      lastName,
+      zip,
+    } = this.props.user
+
+
+    let user = {
+      id: id,
+      shopName: shopName,
+      shopImage: shopImage,
+      shopDescription: shopDetail,
+      username: username,
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      zip: zip,
+    }
+
+    this.props.submitProfileEdit(user)
     // this.props.emptyGroupInputs()
   }
 
@@ -170,9 +195,11 @@ export default class EditProfile extends Component {
       email,
       firstName,
       lastName,
-      location,
+      zip,
     } = this.props.user
 
+    console.log("this.props.user", this.props.user);
+    console.log("shopName", shopName);
     return (
       <View style={styles.container}>
         {/*Item Details*/}
@@ -182,7 +209,7 @@ export default class EditProfile extends Component {
             <InputRow
               onChangeText={this._handleShopName}
               placeholder='Shop Name'
-              value={shopName}
+              value={shopName ? shopName : ''}
             />
           </View>
           <View style={s.separator}/>
@@ -255,7 +282,7 @@ export default class EditProfile extends Component {
               keyboardType="number-pad"
               onChangeText={this._handleMyLocation}
               placeholder='00000'
-              value={location}
+              value={zip ? zip : ''}
             />
           </View>
        {/*<View style={s.separator}/>
