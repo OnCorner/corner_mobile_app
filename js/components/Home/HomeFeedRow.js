@@ -52,7 +52,7 @@ export default class HomeFeedRow extends Component {
         {/* Main swipe */}
         <View style={styles.rowContainer}>
           <TouchableHighlight
-            onPress={Actions.item}
+            onPress={() => Actions.item({rowData})}
             underlayColor='transparent'
           >
             <View style={styles.rowMain}>

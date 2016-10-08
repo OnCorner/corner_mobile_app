@@ -14,7 +14,16 @@ Style.container = {
 }
 
 Style.navbar = {
-  backgroundColor: 'pink',
+  backgroundColor: 'black',
+  height: 55,
+  borderBottomWidth: 0,
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+}
+
+Style.transNavbar = {
+  backgroundColor: 'transparent',
   height: 55,
   borderBottomWidth: 0,
   flex: 1,

@@ -158,9 +158,10 @@ export default class Item extends Component {
   }
 
   render() {
-    var previousRowData = this.props.rowData
     // const {itemsDataSource} = this.props
-    //GOTTA HAVE DISCOVER ROW TO PASS rowData PROP INTO HERE SO I CAN SIMPLY DO rowData.itemImgOne etc.
+    //GOTTA HAVE DISCOVER ROW TO PASS rowData PROP INTO HERE SO I CAN SIMPLY DO rowData.itemitemImgOne etc.
+    const {rowData} = this.props
+
     return (
       <View>
         <StatusBar barStyle="default"/>
@@ -182,19 +183,19 @@ export default class Item extends Component {
         >
           <View style={styles.slideImage}>
             <Image
-              source={previousRowData.image}
+              source={rowData.itemImgOne}
               style={styles.itemImage}
             />
           </View>
           <View style={styles.slideImage}>
             <Image
-              source={previousRowData.image2}
+              source={rowData.itemImgTwo}
               style={styles.itemImage}
             />
           </View>
           <View style={styles.slideImage}>
             <Image
-              source={previousRowData.image3}
+              source={rowData.itemImgThree}
               style={styles.itemImage}
             />
           </View>
@@ -224,16 +225,16 @@ export default class Item extends Component {
               </View>
             }
           >
-            <Text style={styles.brandText}>{previousRowData.brand}</Text>
-            <Text style={styles.styleText}>{previousRowData.style} • Size {previousRowData.size}</Text>
-            <Text style={styles.detailText}>Worn very gently with extreme care</Text>
+            <Text style={styles.brandText}>{rowData.itemBrand}</Text>
+            <Text style={styles.styleText}>{rowData.itemStyle} • Size {rowData.itemSize}</Text>
+            <Text style={styles.detailText}>{rowData.itemDetail}</Text>
             <View style={{flexDirection: 'row'}}>
               <TouchableHighlight
                 underlayColor='transparent'
                 onPress={this._buyPressed.bind(this)}
                 style={styles.buyButton}
               >
-                <Text style={styles.buyButtonText}>Buy ${previousRowData.price}</Text>
+                <Text style={styles.buyButtonText}>Buy ${rowData.itemPrice}</Text>
               </TouchableHighlight>
 
               <TouchableHighlight
@@ -246,26 +247,35 @@ export default class Item extends Component {
             </View>
           </View>
 
-          <View
+       {/*<View
             style={styles.commentSection}
           >
             <ListView
               dataSource={this.state.dataSource}
+              enableEmptySections={true}
               renderRow={this.renderRow.bind(this)}
             />
-          </View>
+          </View>*/}
         </Swiper>
         <Animated.View
           style={[styles.subView,
             {transform: [{translateY: this.state.bounceValue}]}]}
         >
-          <ItemSubviewOrder _buyPressed={this._buyPressed} _paymentPressed={this._paymentPressed}/>
+          <ItemSubviewOrder
+            _buyPressed={this._buyPressed}
+            _paymentPressed={this._paymentPressed}
+            rowData={rowData}
+          />
         </Animated.View>
         <Animated.View
           style={[styles.subViewSecond,
             {transform: [{translateY: this.state.bounceValueSecond}]}]}
         >
-          <ItemSubviewPayment _paymentPressed={this._paymentPressed} _showNotification={this._showNotification}/>
+          <ItemSubviewPayment
+            _paymentPressed={this._paymentPressed}
+            _showNotification={this._showNotification}
+            rowData={rowData}
+          />
         </Animated.View>
       </View>
     );
@@ -278,7 +288,7 @@ const styles = StyleSheet.create({
     height: imageHeight
   },
   wrapper: {
-    backgroundColor: 'pink', //This is important to hide the notification, because it is actually behind it,
+    backgroundColor: 'black', //This is important to hide the notification, because it is actually behind it,
   },
   slideImage: {
     flex: 1,
@@ -356,5 +366,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 11,
     marginTop: 4,
+  },
+  subView: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'black',
+    height: 167,
+    flex: 1,
+  },
+  subViewSecond: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'black',
+    height: 167,
+    flex: 1,
   },
 })

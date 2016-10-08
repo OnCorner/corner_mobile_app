@@ -52,6 +52,7 @@ export default function(state = DEFAULT_STATE, action) {
       }
 
     case actionTypes.UPLOAD_GROUP:
+      console.log('THIS I SADDING RIGHT NOW', state.dataSource)
       return {
         ...state,
         dataSource: [action.group, ...state.dataSource]

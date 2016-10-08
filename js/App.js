@@ -74,6 +74,12 @@ export default class App extends Component {
                   title='Sell'
                 />
                 <Scene
+                  component={Item}
+                  direction='vertical'
+                  key='item'
+                  sceneStyle={s.bgColor}
+                />
+                <Scene
                   component={Shop}
                   key='shop'
                   sceneStyle={s.bgColor}

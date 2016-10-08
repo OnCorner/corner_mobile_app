@@ -51,6 +51,8 @@ export default class ItemSubviewOrder extends Component {
   }
 
   render() {
+    const {rowData} = this.props.rowData
+    console.log('THIS IS THE ROWDATA', rowData)
 
     return (
       <View>
@@ -212,7 +214,7 @@ export default class ItemSubviewOrder extends Component {
               justifyContent: 'space-between',
             }}
           >
-            <Text style={styles.paymentText}>Total <Text style={{ color: '#AD985E', fontSize: 13, fontFamily: 'Helvetica Neue' }}>$275 USD (with shipping)</Text></Text>
+            <Text style={styles.paymentText}>Total <Text style={{ color: '#AD985E', fontSize: 13, fontFamily: 'Helvetica Neue' }}>${rowData.itemPrice} USD (with shipping)</Text></Text>
             <TouchableHighlight
               style={styles.completeButton}
               underlayColor='transparent'
