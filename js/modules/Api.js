@@ -27,7 +27,15 @@ class Route {
       return fetch(url, options).then(res => res.json());
     }
     options.body = JSON.stringify(data);
-    return fetch(url, options).then(res => res.json());
+    return fetch(url, options)
+    .then(res => res.json())
+    .then((res) => {
+      if(res.error) {
+        throw new Error(res.error);
+      }
+
+      return res;
+    });
   }
   fetchDelete(url, data) {
     var options = {
