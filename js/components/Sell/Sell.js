@@ -246,32 +246,31 @@ export default class Sell extends Component {
     } = this.props
 
     var item = {
-      itemTitle: sellItemTitle,
-      itemBrand: sellItemBrand,
-      itemStyle: sellItemStyle,
-      itemSize: sellItemSize,
-      itemDetail: sellItemDetail,
-      itemCategory: sellItemCategory,
-      itemGroup: sellItemGroup,
-      itemQuantity: sellItemQuantity,
-      itemCondition: sellItemCondition,
-      itemPrice: sellItemPrice,
-      itemAcceptOffer: sellItemAcceptOffer,
-      itemLocation: sellItemLocation,
-      itemMeetUp: sellItemMeetUp,
-      itemShipping: sellItemShipping,
-      itemFreeShipping: sellItemFreeShipping,
-      itemImgOne: sellItemImgOne,
-      itemImgTwo: sellItemImgTwo,
-      itemImgThree: sellItemImgThree,
-      itemUsername: this.props.user.username,
+      name: sellItemTitle,
+      quantity: sellItemQuantity,
+      condition: sellItemCondition,
+      price: sellItemPrice,
+      brand: sellItemBrand,
+      style: sellItemStyle,
+      size: sellItemSize,
+      description: sellItemDetail,
+      category: "57cb9f94188eae6c53deed98",
+      groups: ["57f8855753e22e441630e911"],
+      acceptingOffers: sellItemAcceptOffer,
+      zip: sellItemLocation,
+      canMeetUp: sellItemMeetUp,
+      shipping: sellItemShipping,
+      freeShipping: sellItemFreeShipping,
+      image1: sellItemImgOne,
+      image2: sellItemImgTwo,
+      image3: sellItemImgThree,
+      user: this.props.user.id,
     }
 
     //CHANGE TO ITEMTITLE, ITEMBRAND, ITEMSTYLE, ETC.
 
-    this.props.uploadItem(item)
+    this.props.createItem(item)
     //When navigating to it would like to go back down vertically
-    Actions.home(direction='vertical')
     this.props.emptyItemInputs()
 
     //

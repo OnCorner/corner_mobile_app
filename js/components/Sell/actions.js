@@ -147,6 +147,27 @@ export const emptyItemInputs = () => {
   }
 }
 
+export const updateItems = (items) => {
+  return {
+    type: actionTypes.UPDATE_ITEMS,
+    items: items,
+  }
+}
+
+export const createItem = (item) => {
+  return dispatch => {
+    Api.server.create('item', item)
+    .then(item => {
+      console.log("item created", item);
+      Actions.home(direction='vertical')
+    })
+    .catch(err => {
+      console.log("err", err);
+    });
+  }
+}
+
+
 // export const registerUser = (registerInfo) => {
 //   console.log(registerInfo)
 //

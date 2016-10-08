@@ -15,6 +15,9 @@ export default class Discover extends Component {
 
   }
 
+  componentDidMount() {
+  }
+
   renderRow(rowData){
     return(
       <DiscoverRow rowData={rowData}/>
@@ -28,7 +31,7 @@ export default class Discover extends Component {
   }
 
   render() {
-
+    console.log("this.props", this.props);
     return (
       <View style={styles.container}>
         <ListView
