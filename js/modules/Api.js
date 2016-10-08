@@ -23,11 +23,19 @@ class Route {
         'Content-Type': 'application/json',
       }
     };
-    if(arguments.length == 1) {
-      return fetch(url, options).then(res => res.json());
+    if(arguments.length > 1) {
+      options.body = JSON.stringify(data);
     }
-    options.body = JSON.stringify(data);
-    return fetch(url, options).then(res => res.json());
+
+    return fetch(url, options)
+    .then(res => res.json())
+    .then((res) => {
+      if(res.error) {
+        throw res;
+      }
+
+      return res;
+    });
   }
   fetchDelete(url, data) {
     var options = {
@@ -37,11 +45,18 @@ class Route {
         'Content-Type': 'application/json',
       }
     };
-    if(arguments.length == 1) {
-      return fetch(url, options).then(res => res.json());
+    if(arguments.length > 1) {
+      options.body = JSON.stringify(data);
     }
-    options.body = JSON.stringify(data);
-    return fetch(url, options).then(res => res.json());
+    return fetch(url, options)
+    .then(res => res.json())
+    .then((res) => {
+      if(res.error) {
+        throw new Error(res);
+      }
+
+      return res;
+    });
   }
   post(url, data) {
     if(arguments.length == 1) {

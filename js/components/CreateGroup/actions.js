@@ -2,10 +2,10 @@
 import {
   ListView,
 } from 'react-native'
+import Api from '../../modules/Api'
 import { Actions } from 'react-native-router-flux'
 
 import * as actionTypes from '../../actionTypes'
-import Api from '../../modules/Api'
 
 // Action creators
 export const updateGroupName = (text) => {
@@ -57,10 +57,23 @@ export const updateGroupImg = (value) => {
   }
 }
 
-export const uploadGroup = (group) => {
+export const updateGroups = (groups) => {
   return {
-    type: actionTypes.UPLOAD_GROUP,
-    group: group,
+    type: actionTypes.UPDATE_GROUPS,
+    groups: groups,
+  }
+}
+
+export const createGroup = (group, user) => {
+  return dispatch => {
+    Api.server.create('group', group)
+    .then(group => {
+      console.log("group created", group);
+      Actions.discover(direction='vertical')
+    })
+    .catch(err => {
+      console.log("err", err);
+    });
   }
 }
 

@@ -51,11 +51,11 @@ export default function(state = DEFAULT_STATE, action) {
         imgOne: action.imgOne
       }
 
-    case actionTypes.UPLOAD_GROUP:
-      console.log('THIS I SADDING RIGHT NOW', state.dataSource)
+    case actionTypes.UPDATE_GROUPS:
+    console.log("action", action.groups);
       return {
         ...state,
-        dataSource: [action.group, ...state.dataSource]
+        dataSource: action.groups
       }
 
     case actionTypes.EMPTY_GROUP_INPUTS:

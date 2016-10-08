@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import { Actions } from 'react-native-router-flux';
+import Api from '../../modules/Api.js'
 
 const contextTypes = {
   drawer: React.PropTypes.object,
