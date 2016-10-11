@@ -245,30 +245,6 @@ export default class Sell extends Component {
       sellItemImgThree,
     } = this.props
 
-    // var item = {
-    //   name: sellItemTitle,
-    //   quantity: sellItemQuantity,
-    //   condition: sellItemCondition,
-    //   price: sellItemPrice,
-    //   brand: sellItemBrand,
-    //   style: sellItemStyle,
-    //   size: sellItemSize,
-    //   description: sellItemDetail,
-    //   category: "57cb9f94188eae6c53deed98",
-    //   groups: ["57f8855753e22e441630e911"],
-    //   acceptingOffers: sellItemAcceptOffer,
-    //   zip: sellItemLocation,
-    //   canMeetUp: sellItemMeetUp,
-    //   shipping: sellItemShipping,
-    //   freeShipping: sellItemFreeShipping,
-    //   image1: sellItemImgOne,
-    //   image2: sellItemImgTwo,
-    //   image3: sellItemImgThree,
-    //   user: this.props.user.id,
-    // }
-    //
-    // this.props.createItem(item)
-
     var item = {
       name: sellItemTitle,
       quantity: sellItemQuantity,
@@ -278,8 +254,8 @@ export default class Sell extends Component {
       style: sellItemStyle,
       size: sellItemSize,
       description: sellItemDetail,
-      category: sellItemCategory,
-      groups: sellItemGroup,
+      category: "57cb9f94188eae6c53deed98",
+      groups: ["57f8855753e22e441630e911"],
       acceptingOffers: sellItemAcceptOffer,
       zip: sellItemLocation,
       canMeetUp: sellItemMeetUp,
@@ -290,6 +266,30 @@ export default class Sell extends Component {
       image3: sellItemImgThree,
       user: this.props.user.id,
     }
+
+    this.props.createItem(item)
+
+    // var item = {
+    //   name: sellItemTitle,
+    //   quantity: sellItemQuantity,
+    //   condition: sellItemCondition,
+    //   price: sellItemPrice,
+    //   brand: sellItemBrand,
+    //   style: sellItemStyle,
+    //   size: sellItemSize,
+    //   description: sellItemDetail,
+    //   category: sellItemCategory,
+    //   groups: sellItemGroup,
+    //   acceptingOffers: sellItemAcceptOffer,
+    //   zip: sellItemLocation,
+    //   canMeetUp: sellItemMeetUp,
+    //   shipping: sellItemShipping,
+    //   freeShipping: sellItemFreeShipping,
+    //   image1: sellItemImgOne,
+    //   image2: sellItemImgTwo,
+    //   image3: sellItemImgThree,
+    //   user: this.props.user.id,
+    // }
 
     this.props.uploadItem(item)
     //When navigating to it would like to go back down vertically

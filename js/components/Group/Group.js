@@ -25,6 +25,11 @@ export default class Group extends Component {
     this.renderRow = this.renderRow.bind(this)
   }
 
+  componentWillMount() {
+    console.log("Group::componentWillMount", this.props);
+    this.props.fetchItemsByGroupId(this.props.rowData.id)
+  }
+
   renderRow(rowData){
     return(
       <GroupRow rowData={rowData}/>
@@ -40,13 +45,13 @@ export default class Group extends Component {
   }
 
   render() {
-    const {rowData} = this.props
-
+    const {rowData, groupItems} = this.props
+    console.log("GROUPS>>>>>>>>>>>>>>>>>>this.props", this.props);
     return (
       <View style={styles.container}>
         <ListView
           contentContainerStyle={styles.list}
-          dataSource={this.state.dataSource}
+          dataSource={groupItems}
           renderRow={this.renderRow}
           renderHeader={this.renderHeader.bind(this, rowData)}
         />

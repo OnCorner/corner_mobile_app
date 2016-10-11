@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Group from './Group'
 import * as actions from './actions' // mapDispatchToProps
-import { getNav } from '../../reducers/rootReducer'
+import { getNav, getGroup } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
 // const mapDispatchToProps = () => ({
@@ -15,6 +15,7 @@ import { getNav } from '../../reducers/rootReducer'
 
 const mapStateToProps = (state) => ({
   ...getNav(state),
+  ...getGroup(state),
 })
 
 export default connect(mapStateToProps, actions)(Group)
