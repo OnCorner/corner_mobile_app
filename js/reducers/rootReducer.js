@@ -7,6 +7,7 @@ import sell, * as fromSell from './sellReducer'
 import createGroup, * as fromCreateGroup from './createGroupReducer'
 import editProfile, * as fromEditProfile from './editProfileReducer'
 import userInfo, * as fromUserInfo from './userInfoReducer'
+import discover, * as fromDiscover from './discoverReducer'
 
 export default combineReducers({
   nav,
@@ -16,6 +17,7 @@ export default combineReducers({
   createGroup,
   editProfile,
   userInfo,
+  discover,
 })
 
 //Like getNav:nav
@@ -26,3 +28,4 @@ export const getSell = (state) => fromSell.getSell(state.sell)
 export const getCreateGroup = (state) => fromCreateGroup.getCreateGroup(state.createGroup)
 export const getEditProfile = (state) => fromEditProfile.getEditProfile(state.editProfile)
 export const getUserInfo = (state) => fromUserInfo.getUserInfo(state.userInfo)
+export const getDiscover = (state) => fromDiscover.getDiscover(state.discover)

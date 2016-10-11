@@ -139,11 +139,13 @@ export default class CreateGroup extends Component {
       creator: this.props.user.id,
     }
 
-    // this.props.createGroup(group, this.props.user)
+    this.props.createGroup(group, this.props.user)
+    .then(() => {
+      this.props.emptyGroupInputs()
+    })
     //When navigating to it would like to go back down vertically
-    this.props.uploadGroup(group)
-    Actions.discover(direction='vertical')
-    this.props.emptyGroupInputs()
+    // this.props.uploadGroup(group)
+    // Actions.discover(direction='vertical')
   }
 
   render() {

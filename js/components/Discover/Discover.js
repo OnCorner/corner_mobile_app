@@ -18,6 +18,7 @@ export default class Discover extends Component {
   }
 
   componentDidMount() {
+    this.props.getDiscoverGroups();
   }
 
   renderRow(rowData){
@@ -38,7 +39,7 @@ export default class Discover extends Component {
     return (
       <View style={styles.container}>
         <ListView
-          dataSource={this.props.groupsDataSource}
+          dataSource={this.props.discoverGroups}
           enableEmptySections={true}
           renderRow={this.renderRow}
           renderHeader={this.renderHeader}
