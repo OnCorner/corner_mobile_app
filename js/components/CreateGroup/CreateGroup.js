@@ -139,13 +139,23 @@ export default class CreateGroup extends Component {
       creator: this.props.user.id,
     }
 
-    this.props.createGroup(group, this.props.user)
+    // this.props.createGroup(group, this.props.user)
     //When navigating to it would like to go back down vertically
+    this.props.uploadGroup(group)
+    Actions.discover(direction='vertical')
     this.props.emptyGroupInputs()
   }
 
   render() {
-    console.log(this.props)
+    const {
+      groupName,
+      groupDetail,
+      groupCategory,
+      groupRelatedGroups,
+      groupPrivate,
+      groupPrivateConditions,
+      groupImgOne,
+    } = this.props
 
     return (
       <View style={styles.container}>
@@ -154,10 +164,8 @@ export default class CreateGroup extends Component {
           <InputRow
             onChangeText={this._handleName}
             placeholder='Give a name/title for the group... e.g. Nike Roshe'
-            value={this.props.groupName}
-            style={{
-              marginBottom: 15,
-            }}
+            value={groupName ? groupName : ''}
+            style={{marginBottom: 15}}
           />
           <View style={s.separator}/>
           <View style={styles.imageCollectionContainer}>
@@ -168,7 +176,7 @@ export default class CreateGroup extends Component {
             >
               {this.state.imageSelected ?
                 <Image
-                  source={this.props.groupImgOne} style={styles.uploadAvatar}
+                  source={groupImgOne ? groupImgOne : ''} style={styles.uploadAvatar}
                 />
                 :
                 <View style={styles.imageContainer}>
@@ -180,7 +188,7 @@ export default class CreateGroup extends Component {
           <InputBox
             onChangeText={this._handleDetail}
             placeholder='Add a brief description... e.g. Marketplace dedicated to Nike Roshe collectors.'
-            value={this.props.groupDetail}
+            value={groupDetail ? groupDetail : ''}
           />
           <View style={s.separator}/>
           <View style={s.rowContainer}>
@@ -188,7 +196,7 @@ export default class CreateGroup extends Component {
             <InputRow
               placeholder='Shoes'
               onChangeText={this._handleCategory}
-              value={this.props.groupCategory}
+              value={groupCategory ? groupCategory : ''}
             />
           </View>
           <View style={s.separator}/>
@@ -197,7 +205,7 @@ export default class CreateGroup extends Component {
             <InputRow
               placeholder='Select'
               onChangeText={this._handleRelatedGroups}
-              value={this.props.groupRelatedGroups}
+              value={groupRelatedGroups ? groupRelatedGroups : ''}
               placeholderTextColor='white'
             />
           </View>
@@ -207,16 +215,16 @@ export default class CreateGroup extends Component {
             <Switch
               onTintColor='#AD985E'
               onValueChange={this._handlePrivate}
-              value={this.props.groupPrivate}
+              value={groupPrivate}
             />
           </View>
           <View style={s.separator}/>
-          {this.props.groupPrivate ?
+          {groupPrivate ?
             <View>
               <InputBox
                 onChangeText={this._handlePrivateConditions}
                 placeholder='Place conditions for joining... e.g. Must correctly answer 3 group related questions via email.'
-                value={this.props.groupPrivateConditions}
+                value={groupPrivateConditions ? groupPrivateConditions : ''}
               />
               <View style={s.separator}/>
             </View>

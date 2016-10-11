@@ -158,8 +158,6 @@ export default class Item extends Component {
   }
 
   render() {
-    // const {itemsDataSource} = this.props
-    //GOTTA HAVE DISCOVER ROW TO PASS rowData PROP INTO HERE SO I CAN SIMPLY DO rowData.itemitemImgOne etc.
     const {rowData} = this.props
 
     return (
@@ -183,19 +181,19 @@ export default class Item extends Component {
         >
           <View style={styles.slideImage}>
             <Image
-              source={rowData.itemImgOne}
+              source={rowData.image1}
               style={styles.itemImage}
             />
           </View>
           <View style={styles.slideImage}>
             <Image
-              source={rowData.itemImgTwo}
+              source={rowData.image2}
               style={styles.itemImage}
             />
           </View>
           <View style={styles.slideImage}>
             <Image
-              source={rowData.itemImgThree}
+              source={rowData.image3}
               style={styles.itemImage}
             />
           </View>
@@ -225,16 +223,16 @@ export default class Item extends Component {
               </View>
             }
           >
-            <Text style={styles.brandText}>{rowData.itemBrand}</Text>
-            <Text style={styles.styleText}>{rowData.itemStyle} • Size {rowData.itemSize}</Text>
-            <Text style={styles.detailText}>{rowData.itemDetail}</Text>
+            <Text style={styles.brandText}>{rowData.brand}</Text>
+            <Text style={styles.styleText}>{rowData.style} • Size {rowData.itemSize}</Text>
+            <Text style={styles.detailText}>{rowData.description}</Text>
             <View style={{flexDirection: 'row'}}>
               <TouchableHighlight
                 underlayColor='transparent'
                 onPress={this._buyPressed.bind(this)}
                 style={styles.buyButton}
               >
-                <Text style={styles.buyButtonText}>Buy ${rowData.itemPrice}</Text>
+                <Text style={styles.buyButtonText}>Buy ${rowData.price}</Text>
               </TouchableHighlight>
 
               <TouchableHighlight
@@ -384,5 +382,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     height: 167,
     flex: 1,
+  },
+  usernameText: {
+    color: 'white',
+    fontSize: 13,
+    fontFamily: 'Helvetica Neue',
+    marginBottom: 5
   },
 })

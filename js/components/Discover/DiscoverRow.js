@@ -10,6 +10,7 @@ import {
   Dimensions
 } from 'react-native';
 import Swiper from 'react-native-swiper'
+import { Actions } from 'react-native-router-flux'
 
 import DiscoverRowLeft from './DiscoverRowLeft'
 import DiscoverRowRight from './DiscoverRowRight'
@@ -18,7 +19,7 @@ var width = Dimensions.get('window').width;
 
 export default class DiscoverRow extends Component {
   constructor() {
-    super();
+    super()
   }
 
   _likePressed() {
@@ -30,7 +31,8 @@ export default class DiscoverRow extends Component {
   }
 
   render() {
-    var rowData = this.props.rowData
+    const {rowData} = this.props
+    console.log('___(((((())))))', rowData)
 
     return (
       <Swiper
@@ -47,15 +49,18 @@ export default class DiscoverRow extends Component {
         {/* Main swipe */}
         <View style={{flex: 1, padding: 15}}>
           <View>
-            <TouchableHighlight>
+            <TouchableHighlight
+              onPress={() => Actions.group({rowData})}
+              underlayColor='transparent'
+            >
               <Image
-                source={rowData.groupImgOne}
+                source={rowData.image}
                 style={styles.groupThumb}
               />
             </TouchableHighlight>
             <View style={styles.rowGroupContainer}>
               <View>
-                <Text style={styles.groupText}>{rowData.groupName}</Text>
+                <Text style={styles.groupText}>{rowData.name}</Text>
 
                 <TouchableHighlight onPress={null}>
                   <Text style={styles.admin}>{rowData.groupAdmin}</Text>

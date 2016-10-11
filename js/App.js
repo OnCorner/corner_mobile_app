@@ -26,6 +26,7 @@ import EditProfile from './components/EditProfile'
 import Shop from './components/Shop'
 import Settings from './components/Settings'
 import Item from './components/Item'
+import Group from './components/Group'
 
 const RouterWithRedux = connect()(Router)
 const store = configureStore()
@@ -101,6 +102,12 @@ export default class App extends Component {
                   type='reset'
                 />
                 <Scene
+                  component={Group}
+                  direction='vertical'
+                  key='group'
+                  sceneStyle={s.bgColor}
+                />
+                <Scene
                   component={EditProfile}
                   key='editprofile'
                   sceneStyle={s.bgColor}
@@ -124,3 +131,4 @@ export default class App extends Component {
 }
 
 //Register - navbar style: transparent, move title to left
+//Re-structure Scene levels

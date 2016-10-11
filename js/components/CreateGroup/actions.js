@@ -68,14 +68,25 @@ export const createGroup = (group, user) => {
   return dispatch => {
     Api.server.create('group', group)
     .then(group => {
-      console.log("group created", group);
+      dispatch(uploadGroup(group))
+      console.log("group created", group)
       Actions.discover(direction='vertical')
     })
     .catch(err => {
-      console.log("err", err);
-    });
+      console.log("err", err)
+    })
   }
 }
+
+//FOR TESTING PURPOSES
+export const uploadGroup = (group) => {
+  return {
+    type: actionTypes.UPLOAD_GROUP,
+    group: group,
+  }
+}
+
+//ADD COMPONENT WILL MOUNT THAT WILL FETCH ALL THE ARRAY OF GROUPS AT THE MOMENT, CREATE GROUP JUST ADDS IT TO THE ARRAY FOR TIME BEING
 
 export const emptyGroupInputs = () => {
   return {

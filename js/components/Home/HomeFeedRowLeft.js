@@ -10,7 +10,7 @@ import s from '../../../public/assets/styles/global'
 
 export default class HomeFeedRowLeft extends Component {
   constructor() {
-    super();
+    super()
   }
 
   render() {

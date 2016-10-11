@@ -10,7 +10,7 @@ import s from '../../../public/assets/styles/global'
 
 export default class DiscoverRowLeft extends Component {
   constructor() {
-    super();
+    super()
   }
 
   render() {

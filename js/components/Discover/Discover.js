@@ -13,6 +13,8 @@ export default class Discover extends Component {
   constructor(){
     super()
 
+    this.renderHeader = this.renderHeader.bind(this)
+    this.renderRow = this.renderRow.bind(this)
   }
 
   componentDidMount() {
@@ -31,14 +33,15 @@ export default class Discover extends Component {
   }
 
   render() {
-    console.log("this.props", this.props);
+    console.log("this.props", this.props)
+
     return (
       <View style={styles.container}>
         <ListView
           dataSource={this.props.groupsDataSource}
           enableEmptySections={true}
-          renderRow={this.renderRow.bind(this)}
-          renderHeader={this.renderHeader.bind(this)}
+          renderRow={this.renderRow}
+          renderHeader={this.renderHeader}
         />
       </View>
     );

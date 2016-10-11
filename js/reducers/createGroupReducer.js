@@ -52,10 +52,16 @@ export default function(state = DEFAULT_STATE, action) {
       }
 
     case actionTypes.UPDATE_GROUPS:
-    console.log("action", action.groups);
+      console.log("action", action.groups)
       return {
         ...state,
         dataSource: action.groups
+      }
+
+    case actionTypes.UPLOAD_GROUP:
+      return {
+        ...state,
+        dataSource: [...state.dataSource, action.group],
       }
 
     case actionTypes.EMPTY_GROUP_INPUTS:
@@ -67,7 +73,7 @@ export default function(state = DEFAULT_STATE, action) {
         relatedGroups: '',
         private: null,
         privateConditions: '',
-        imgOne: null,
+        // imgOne: null,
       }
 
     default:

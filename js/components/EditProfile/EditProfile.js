@@ -233,7 +233,7 @@ export default class EditProfile extends Component {
           <InputBox
             onChangeText={this._handleShopDetail}
             placeholder='Add a brief description for your shop... e.g. Selling only Supreme.'
-            value={shopDetail}
+            value={shopDetail ? shopDetail : ''}
           />
           <View style={s.separator}/>
           <View style={s.rowContainer}>

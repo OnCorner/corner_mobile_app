@@ -245,6 +245,30 @@ export default class Sell extends Component {
       sellItemImgThree,
     } = this.props
 
+    // var item = {
+    //   name: sellItemTitle,
+    //   quantity: sellItemQuantity,
+    //   condition: sellItemCondition,
+    //   price: sellItemPrice,
+    //   brand: sellItemBrand,
+    //   style: sellItemStyle,
+    //   size: sellItemSize,
+    //   description: sellItemDetail,
+    //   category: "57cb9f94188eae6c53deed98",
+    //   groups: ["57f8855753e22e441630e911"],
+    //   acceptingOffers: sellItemAcceptOffer,
+    //   zip: sellItemLocation,
+    //   canMeetUp: sellItemMeetUp,
+    //   shipping: sellItemShipping,
+    //   freeShipping: sellItemFreeShipping,
+    //   image1: sellItemImgOne,
+    //   image2: sellItemImgTwo,
+    //   image3: sellItemImgThree,
+    //   user: this.props.user.id,
+    // }
+    //
+    // this.props.createItem(item)
+
     var item = {
       name: sellItemTitle,
       quantity: sellItemQuantity,
@@ -254,8 +278,8 @@ export default class Sell extends Component {
       style: sellItemStyle,
       size: sellItemSize,
       description: sellItemDetail,
-      category: "57cb9f94188eae6c53deed98",
-      groups: ["57f8855753e22e441630e911"],
+      category: sellItemCategory,
+      groups: sellItemGroup,
       acceptingOffers: sellItemAcceptOffer,
       zip: sellItemLocation,
       canMeetUp: sellItemMeetUp,
@@ -267,26 +291,10 @@ export default class Sell extends Component {
       user: this.props.user.id,
     }
 
-    //CHANGE TO ITEMTITLE, ITEMBRAND, ITEMSTYLE, ETC.
-
-    this.props.createItem(item)
+    this.props.uploadItem(item)
     //When navigating to it would like to go back down vertically
     this.props.emptyItemInputs()
-
-    //
-    // var items = []
-    // items.push(item)
-
-    // var items = [
-    //   {brand: 'Gosha Rubchinskiy', style: 'Classic Short Sleeve', size: 'OS', price:500, image: require('../../../public/assets/img/dummy/item1.jpg'), image2: require('../../../public/assets/img/dummy/item2.jpg'), image3: require('../../../public/assets/img/dummy/item3.jpg'), detail:'Super clean worn handful of times ', username: 'haru_jsb', category: 'Shirts', timeStamp:'2m'},
-    //
-    //   {brand: 'CAV EMPT', style: 'Noizig Shirt', size: '7', price:650, image:require('../../../public/assets/img/dummy/item2.jpg'), detail:'TAG SIZE: S. Fits Larger. Perfect for 48 size. Easily fit for 50!', username: 'julzzang', category: 'Shoes', timeStamp:'15h'},
-    //
-    //   {brand: 'Berluti', style: 'Striped L/S Shirt', size: 'L', price:250, image: require('../../../public/assets/img/dummy/item3.jpg'), detail:'This is a vintage beauty with a little wear but still in great shape.', username: 'suzhe012', category: 'Cars', timeStamp:'50s'},
-    // ]
-    //
-    // var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    // var dataSource = ds.cloneWithRows(items)
+    Actions.home(direction='vertical')
   }
 
   render() {

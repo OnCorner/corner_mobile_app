@@ -9,30 +9,30 @@ import {
 
 export default class DiscoverRowRight extends Component {
   constructor() {
-    super();
+    super()
   }
 
   render() {
-    var rowData = this.props.rowData
+    const {rowData} = this.props
 
     return (
       <View style={{flex:1}}>
         <View style={styles.rowInfo}>
           {/* Top section */}
           <View>
-            <Text style={styles.brandText}>{rowData.groupName}</Text>
+            <Text style={styles.brandText}>{rowData.name}</Text>
             <Text style={styles.followerText}>00k followers</Text>
             <Text style={styles.likeText}>00k likes</Text>
           </View>
           {/* Mid section */}
           <View>
-            <Text style={styles.groupDetailText}>{rowData.groupDetail}</Text>
+            <Text style={styles.groupDetailText}>{rowData.description}</Text>
           </View>
           {/* Bottom section */}
           <View style={styles.rowInfoBottom}>
             <View>
               <Text style={styles.adminText}>Username</Text>
-              <Text style={styles.moreInfoText}>{rowData.groupCategory} 30d</Text>
+              <Text style={styles.moreInfoText}>{rowData.category} 30d</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
               <TouchableHighlight
