@@ -3,15 +3,15 @@ import * as actionTypes from '../actionTypes'
 import { ListView } from 'react-native'
 
 const DEFAULT_STATE = {
-  groups: []
+  items: []
 }
 
 export default function(state = DEFAULT_STATE, action) {
   switch(action.type) {
-    case actionTypes.POPULATE_GROUPS:
+    case actionTypes.POPULATE_HOME_ITEMS:
       return {
         ...state,
-        groups: action.groups
+        items: action.items
       }
 
     default:
@@ -21,6 +21,6 @@ export default function(state = DEFAULT_STATE, action) {
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
-export const getDiscover = (state) => ({
-  discoverGroups: ds.cloneWithRows(state.groups),
+export const getHome = (state) => ({
+  homeItems: ds.cloneWithRows(state.items),
 })

@@ -27,9 +27,12 @@ export default class DiscoverHeader extends Component {
     this.state = {
       selected: false,
       dataSource: ds.cloneWithRows([
-
+        {groupImage: require('../../../public/assets/img/dummy/supremeGroup.jpeg'), groupName: 'Supreme Marketplace', groupAdmin: 'we12'},
+        {groupImage: require('../../../public/assets/img/dummy/jordanGroup.jpeg'), groupName: 'Jordan Marketplace', groupAdmin: 'out31'},
+        {groupImage: require('../../../public/assets/img/dummy/palaceGroup.jpg'), groupName: 'Palace Marketplace', groupAdmin: 'che'},
+        {groupImage: require('../../../public/assets/img/dummy/lamboGroup.jpg'), groupName: 'Lambo Marketplace', groupAdmin: 'chea55'},
       ])
-    };
+    }
   }
 
   _renderRow(rowData){
@@ -38,11 +41,11 @@ export default class DiscoverHeader extends Component {
         <TouchableHighlight underlayColor='transparent'>
           <View style={styles.groupDetailContainer}>
             <Image
-              source={rowData.imageHeader}
+              source={rowData.groupImage}
               style={styles.groupImage}
             />
-            <Text style={styles.groupText}>{rowData.groupHeader}</Text>
-            <Text style={styles.adminText}>{rowData.adminHeader}</Text>
+            <Text style={styles.groupText}>{rowData.groupName}</Text>
+            <Text style={styles.adminText}>{rowData.groupAdmin}</Text>
           </View>
         </TouchableHighlight>
       </View>

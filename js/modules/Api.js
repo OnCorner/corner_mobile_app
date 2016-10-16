@@ -22,7 +22,7 @@ class Route {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       }
-    };
+    }
     if(arguments.length > 1) {
       options.body = JSON.stringify(data);
     }
@@ -35,7 +35,7 @@ class Route {
       }
 
       return res;
-    });
+    })
   }
   fetchDelete(url, data) {
     var options = {
@@ -44,7 +44,7 @@ class Route {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       }
-    };
+    }
     if(arguments.length > 1) {
       options.body = JSON.stringify(data);
     }

@@ -31,7 +31,7 @@ export default class DiscoverRowRight extends Component {
           {/* Bottom section */}
           <View style={styles.rowInfoBottom}>
             <View>
-              <Text style={styles.adminText}>Username</Text>
+              <Text style={styles.adminText}>{rowData.creator.username}</Text>
               <Text style={styles.moreInfoText}>{rowData.category} 30d</Text>
             </View>
             <View style={{flexDirection: 'row'}}>

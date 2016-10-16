@@ -155,6 +155,8 @@ export const updateItems = (items) => {
 }
 
 export const createItem = (item) => {
+  console.log('TIS THE ITEM I TRY TO CREATE ', item)
+
   return dispatch => {
     Api.server.create('item', item)
     .then(item => {

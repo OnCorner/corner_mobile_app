@@ -63,7 +63,7 @@ export default class DiscoverRow extends Component {
                 <Text style={styles.groupText}>{rowData.name}</Text>
 
                 <TouchableHighlight onPress={null}>
-                  <Text style={styles.admin}>{rowData.groupAdmin}</Text>
+                  <Text style={styles.admin}>{rowData.creator.username}</Text>
                 </TouchableHighlight>
               </View>
             </View>

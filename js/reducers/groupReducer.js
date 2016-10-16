@@ -1,5 +1,6 @@
 // @flow weak
 import * as actionTypes from '../actionTypes'
+import { ListView } from 'react-native'
 
 const DEFAULT_STATE = {
   items: []
@@ -10,7 +11,7 @@ export default function(state = DEFAULT_STATE, action) {
     case actionTypes.POPULATE_GROUP_ITEMS:
       return {
         ...state,
-        items: items
+        items: action.items
       }
 
     default:
@@ -18,6 +19,8 @@ export default function(state = DEFAULT_STATE, action) {
   }
 }
 
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+
 export const getGroup = (state) => ({
-  groupItems: state.items
+  groupItems: ds.cloneWithRows(state.items),
 })

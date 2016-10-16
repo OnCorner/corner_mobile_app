@@ -8,25 +8,29 @@ import {
   Text,
   TouchableHighlight,
   View,
-} from 'react-native';
+} from 'react-native'
+import { Actions } from 'react-native-router-flux'
 
 var width = Dimensions.get('window').width;
 
 export default class GroupRow extends Component {
 
   render() {
-    var previousRowData = this.props.rowData
+    const {rowData} = this.props
 
     return (
       <View style={styles.item}>
-        <TouchableHighlight underlayColor='transparent'>
+        <TouchableHighlight
+          onPress={() => Actions.item({rowData})}
+          underlayColor='transparent'
+        >
           <View>
             <Image
-              source={previousRowData.image}
+              source={rowData.image1}
               style={styles.groupImage}
             />
-            <Text style={styles.styleText}>{previousRowData.style}</Text>
-            <Text style={styles.priceText}>${previousRowData.price}</Text>
+            <Text style={styles.styleText}>{rowData.style}</Text>
+            <Text style={styles.priceText}>${rowData.price}</Text>
           </View>
         </TouchableHighlight>
       </View>

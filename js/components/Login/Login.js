@@ -59,7 +59,7 @@ export default class Login extends Component {
     if(this.state.isPendingSession) {
       return (
         <View style={styles.splashPage}></View>
-      );
+      )
     } else {
       return (
         <Image

@@ -246,7 +246,7 @@ export default class Sell extends Component {
     } = this.props
 
     var item = {
-      name: sellItemTitle,
+      name: 'This needs to be deleted',
       quantity: sellItemQuantity,
       condition: sellItemCondition,
       price: sellItemPrice,
@@ -255,7 +255,7 @@ export default class Sell extends Component {
       size: sellItemSize,
       description: sellItemDetail,
       category: "57cb9f94188eae6c53deed98",
-      groups: ["57f8855753e22e441630e911"],
+      groups: ["580138dff397d3b0036a22f1"],
       acceptingOffers: sellItemAcceptOffer,
       zip: sellItemLocation,
       canMeetUp: sellItemMeetUp,
@@ -291,13 +291,33 @@ export default class Sell extends Component {
     //   user: this.props.user.id,
     // }
 
+    //For testing purpose, eventually in componentWillMount() fetch for all of items posted by user and groups following in the groups following
     this.props.uploadItem(item)
     //When navigating to it would like to go back down vertically
     this.props.emptyItemInputs()
-    Actions.home(direction='vertical')
   }
 
   render() {
+    const {
+      sellItemTitle,
+      sellItemBrand,
+      sellItemStyle,
+      sellItemSize,
+      sellItemDetail,
+      sellItemCategory,
+      sellItemGroup,
+      sellItemQuantity,
+      sellItemCondition,
+      sellItemPrice,
+      sellItemAcceptOffer,
+      sellItemLocation,
+      sellItemMeetUp,
+      sellItemShipping,
+      sellItemFreeShipping,
+      sellItemImgOne,
+      sellItemImgTwo,
+      sellItemImgThree,
+    } = this.props
 
     return (
       <ScrollView
@@ -309,10 +329,8 @@ export default class Sell extends Component {
           <InputRow
             onChangeText={this._handleStyle}
             placeholder='Give a style for the listing... e.g. Goat Hair Slippers'
-            value={this.props.sellItemStyle}
-            style={{
-              marginBottom: 15,
-            }}
+            value={sellItemStyle ? sellItemStyle : ''}
+            style={{marginBottom: 15}}
           />
           <View style={s.separator}/>
           <View style={styles.imageCollectionContainer} >
@@ -323,7 +341,7 @@ export default class Sell extends Component {
             >
               {this.state.imageSelected ?
                 <Image
-                  source={this.props.sellItemImgOne} style={styles.uploadAvatar}
+                  source={sellItemImgOne ? sellItemImgOne : ''} style={styles.uploadAvatar}
                 />
                 :
                 <View style={styles.imageContainer}>
@@ -338,7 +356,7 @@ export default class Sell extends Component {
             >
               {this.state.imageSelected ?
                 <Image
-                  source={this.props.sellItemImgTwo} style={styles.uploadAvatar}
+                  source={sellItemImgTwo ? sellItemImgTwo : ''} style={styles.uploadAvatar}
                 />
                 :
                 <View style={styles.imageContainer}>
@@ -353,7 +371,7 @@ export default class Sell extends Component {
             >
               {this.state.imageSelected ?
                 <Image
-                  source={this.props.sellItemImgTwo} style={styles.uploadAvatar}
+                  source={sellItemImgTwo ? sellItemImgTwo : ''} style={styles.uploadAvatar}
                 />
                 :
                 <View style={styles.imageContainer}>
@@ -365,7 +383,7 @@ export default class Sell extends Component {
           <InputBox
             onChangeText={this._handleDetail}
             placeholder='Add a brief description... e.g. Tried on once. Missing half a strand of goat hair.'
-            value={this.props.sellItemDetail}
+            value={sellItemDetail ? sellItemDetail : ''}
           />
           <View style={s.separator}/>
           <View style={s.rowContainer}>
@@ -373,7 +391,7 @@ export default class Sell extends Component {
             <InputRow
               placeholder='New'
               onChangeText={this._handleCondition}
-              value={this.props.sellItemCondition}
+              value={sellItemCondition ? sellItemCondition : ''}
             />
           </View>
           <View style={s.separator}/>
@@ -382,7 +400,7 @@ export default class Sell extends Component {
             <InputRow
               placeholder='Nike'
               onChangeText={this._handleBrand}
-              value={this.props.sellItemBrand}
+              value={sellItemBrand ? sellItemBrand : ''}
             />
           </View>
           <View style={s.separator}/>
@@ -391,7 +409,7 @@ export default class Sell extends Component {
             <InputRow
               placeholder='M'
               onChangeText={this._handleSize}
-              value={this.props.sellItemSize}
+              value={sellItemSize ? sellItemSize : ''}
             />
           </View>
           <View style={s.separator}/>
@@ -400,7 +418,7 @@ export default class Sell extends Component {
             <InputRow
               placeholder='Shoes'
               onChangeText={this._handleCategory}
-              value={this.props.sellItemCategory}
+              value={sellItemCategory ? sellItemCategory : ''}
             />
           </View>
           <View style={s.separator}/>
@@ -409,7 +427,7 @@ export default class Sell extends Component {
             <InputRow
               placeholder='Button'
               onChangeText={this._handleGroup}
-              value={this.props.sellItemGroup}
+              value={sellItemGroup ? sellItemGroup : ''}
             />
           </View>
           <View style={s.separator}/>
@@ -419,7 +437,7 @@ export default class Sell extends Component {
               placeholder='Quantity'
               keyboardType="number-pad"
               onChangeText={this._handleQuantity}
-              value={this.props.sellItemQuantity}
+              value={sellItemQuantity ? sellItemQuantity : ''}
             />
           </View>
           <View style={s.separator}/>
@@ -429,7 +447,7 @@ export default class Sell extends Component {
               placeholder='$0'
               keyboardType="number-pad"
               onChangeText={this._handlePrice}
-              value={this.props.sellItemPrice}
+              value={sellItemPrice ? sellItemPrice : ''}
             />
           </View>
         </View>
@@ -452,7 +470,7 @@ export default class Sell extends Component {
               keyboardType="number-pad"
               onChangeText={this._handleLocation}
               placeholder='ZIP Code'
-              value={this.props.sellItemLocation}
+              value={sellItemLocation ? sellItemLocation : ''}
             />
           </View>
           <View style={s.separator}/>
@@ -461,7 +479,7 @@ export default class Sell extends Component {
             <Switch
               onTintColor='#AD985E'
               onValueChange={this._handleAcceptOffer}
-              value={this.props.sellItemAcceptOffer}
+              value={sellItemAcceptOffer}
             />
           </View>
           <View style={s.separator}/>
@@ -470,7 +488,7 @@ export default class Sell extends Component {
             <Switch
               onTintColor='#AD985E'
               onValueChange={this._handleMeetUp}
-              value={this.props.sellItemMeetUp}
+              value={sellItemMeetUp}
             />
           </View>
           <View style={s.separator}/>
@@ -479,7 +497,7 @@ export default class Sell extends Component {
             <Switch
               onTintColor='#AD985E'
               onValueChange={this._handleShipping}
-              value={this.props.sellItemShipping}
+              value={sellItemShipping}
             />
           </View>
           <View style={s.separator}/>
@@ -488,7 +506,7 @@ export default class Sell extends Component {
             <Switch
               onTintColor='#AD985E'
               onValueChange={this._handleFreeShipping}
-              value={this.props.sellItemFreeShipping}
+              value={sellItemFreeShipping}
             />
           </View>
           <View style={s.separator}/>

@@ -36,6 +36,8 @@ export default class Home extends Component {
   componentWillMount() {
     console.log('Printing out user info')
     console.log(this.props.user)
+
+    this.props.populateHomeItems(this.props.user.items)
   }
 
   _renderRow(rowData){
@@ -45,11 +47,12 @@ export default class Home extends Component {
   }
 
   render() {
+    const {homeItems} = this.props
 
     return (
       <View style={s.container}>
         <ListView
-          dataSource={this.props.itemsDataSource}
+          dataSource={homeItems}
           enableEmptySections={true}
           renderRow={this._renderRow}
         />

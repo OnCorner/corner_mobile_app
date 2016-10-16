@@ -13,16 +13,16 @@ var width = Dimensions.get('window').width;
 
 export default class GroupHeader extends Component {
   render() {
-    const {rowData} = this.props
+    const {headerData} = this.props
 
     return (
       <View style={styles.container}>
         <Image
-          source={rowData.image}
+          source={headerData.image}
           style={styles.groupImage}
         />
         <Text style={styles.infoButton}>Info</Text>
-        <Text style={styles.groupName}>{rowData.name}</Text>
+        <Text style={styles.groupName}>{headerData.name}</Text>
         <Text style={styles.followButton}>Follow</Text>
       </View>
     );

@@ -6,6 +6,8 @@ import * as actions from './actions' // mapDispatchToProps
 import {
   getNav,
   getSell,
+  getShop,
+  getUserInfo,
 } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
@@ -18,7 +20,8 @@ import {
 
 const mapStateToProps = (state) => ({
   ...getNav(state),
-  ...getSell(state),
+  ...getShop(state),
+  ...getUserInfo(state),
 })
 
 export default connect(mapStateToProps, actions)(Shop)

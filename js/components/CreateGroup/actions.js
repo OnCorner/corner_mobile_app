@@ -66,11 +66,10 @@ export const updateGroups = (groups) => {
 
 export const createGroup = (group, user) => {
   return dispatch => {
-    return Api.server.create('group', group)
+    Api.server.create('group', group)
     .then(group => {
       console.log("group created", group)
       Actions.discover(direction='vertical')
-      return dispatch(uploadGroup(group))
     })
     .catch(err => {
       console.log("err", err)

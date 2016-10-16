@@ -25,8 +25,15 @@ export default class Shop extends Component {
 
   }
 
+  componentWillMount() {
+    console.log(']]]].........> this shop items ', this.props.user.items)
+    this.props.populateShopItems(this.props.user.items)
+  }
+
   render() {
-    const {itemsDataSource, tabStyle} = this.props
+    const {shopItems} = this.props
+
+    console.log('EVERYTHING DAT BEING PASSED INTO SHOP ', this.props)
 
     return (
       <View style={styles.container}>
@@ -51,7 +58,7 @@ export default class Shop extends Component {
             fontSize: 13
           }}
         >
-          <ShopItems tabLabel='Items' itemsDataSource={itemsDataSource}/>
+          <ShopItems tabLabel='Items' shopItems={shopItems}/>
           <ShopFollowing tabLabel='Following'/>
           <ShopRating tabLabel='Rating 4.9'/>
         </ScrollableTabView>

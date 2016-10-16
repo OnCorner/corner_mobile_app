@@ -8,7 +8,8 @@ import {
   ListView,
   TouchableHighlight,
   Image
-} from 'react-native';
+} from 'react-native'
+import { Actions } from 'react-native-router-flux'
 
 export default class ShopItems extends Component {
   constructor(){
@@ -20,14 +21,17 @@ export default class ShopItems extends Component {
   _renderRow(rowData){
     return (
       <View style={styles.item}>
-        <TouchableHighlight underlayColor='transparent'>
+        <TouchableHighlight
+          onPress={() => Actions.item({rowData})}
+          underlayColor='transparent'
+        >
           <View>
             <Image
-              source={rowData.itemImgOne}
+              source={rowData.image1}
               style={styles.groupImage}
             />
-            <Text style={styles.styleText}>{rowData.itemStyle}</Text>
-            <Text style={styles.priceText}>${rowData.itemPrice}</Text>
+            <Text style={styles.styleText}>{rowData.style}</Text>
+            <Text style={styles.priceText}>${rowData.price}</Text>
           </View>
         </TouchableHighlight>
       </View>
@@ -35,12 +39,12 @@ export default class ShopItems extends Component {
   }
 
   render() {
-    const {itemsDataSource} = this.props
+    const {shopItems} = this.props
 
     return (
       <ListView
         contentContainerStyle={styles.list}
-        dataSource={itemsDataSource}
+        dataSource={shopItems}
         enableEmptySections={true}
         renderRow={this._renderRow}
       />

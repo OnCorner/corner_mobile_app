@@ -18,11 +18,17 @@ export const populateGroupItems = (items) => {
 }
 
 export const fetchItemsByGroupId = (groupId) => {
-  console.log('Group')
   const searchCriteria = {groups: [groupId]}
-  Api.server.find('item'/*, searchCriteria*/)
-  .then((items) => {
-    console.log("items>>>>>>>>>>>>>>>>>>", items);
-    dispatch(populateGroupItems(items))
-  })
+
+  console.log('Group id shizzz ', searchCriteria)
+  return dispatch => {
+    Api.server.find('item', searchCriteria)
+    .then((items) => {
+      console.log("items>>>>>>>>>>>>>>>>>>", items);
+      dispatch(populateGroupItems(items))
+    })
+    .catch((error) => {
+      console.log('Group error: ', error)
+    })
+  }
 }

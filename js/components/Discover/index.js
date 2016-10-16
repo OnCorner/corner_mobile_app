@@ -5,7 +5,8 @@ import Discover from './Discover'
 import * as actions from './actions' // mapDispatchToProps
 import {
   getNav,
-  getCreateGroup
+  getCreateGroup,
+  getDiscover,
 } from '../../reducers/rootReducer'
 
 // Combining 1 or + actionCreators
@@ -19,6 +20,7 @@ import {
 const mapStateToProps = (state) => ({
   ...getNav(state),
   ...getCreateGroup(state),
+  ...getDiscover(state),
 })
 
 export default connect(mapStateToProps, actions)(Discover)
