@@ -38,7 +38,8 @@ export default class Login extends Component {
   }
 
   componentDidMount() {
-    Socket.subscribeToChat();
+    var chat = {id: "58047d0a707d290c9c0833e3", chatName: "Cool Chat"}
+    Socket.enterChatRoom(chat);
   }
 
   _handleUsername(text) {

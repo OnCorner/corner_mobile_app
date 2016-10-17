@@ -11,9 +11,9 @@ io.sails.url = Url.localhost;
 alert(io.sails.url);
 // console.log('XXX', socket);
 module.exports = {
-  subscribeToChat: function() {
-    io.socket.on('message', function(data) {
-      alert(data.message);
+  enterChatRoom: function(chat) {
+    io.socket.on(chat.id, function(message) {
+      alert(message.text);
     });
     // alert("got to subscribe");
     // io.socket.on('connect', function(data) {
@@ -26,5 +26,10 @@ module.exports = {
     //   })
     // });
     // return io.socket.get('/section/connect');
+  },
+  testMessage: function() {
+    io.socket.on('message', function(data) {
+      alert(data.message);
+    });
   }
 };
