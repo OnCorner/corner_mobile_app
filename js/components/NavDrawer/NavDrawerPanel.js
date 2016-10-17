@@ -29,17 +29,17 @@ const NavDrawerPanel = (props, context) => {
           Discover
         </Text>
       </TouchableHighlight>
-      <TouchableHighlight>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.inbox();}}>
         <Text style={styles.button}>
           Inbox
         </Text>
       </TouchableHighlight>
-      <TouchableHighlight>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.inventory();}}>
         <Text style={styles.button}>
           Inventory
         </Text>
       </TouchableHighlight>
-      <TouchableHighlight>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.transactions();}}>
         <Text style={[styles.button, {marginBottom: 15}]}>
           Transactions
         </Text>
