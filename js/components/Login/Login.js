@@ -11,6 +11,7 @@ import { Actions } from 'react-native-router-flux'
 // import s from '../../../public/assets/style/global'
 // style={s.text1}
 import InputNormal from '../../elements/InputNormal'
+import Socket from '../../modules/Socket'
 
 export default class Login extends Component {
   constructor() {
@@ -34,6 +35,10 @@ export default class Login extends Component {
         this.setState({isPendingSession: false});
       }
     })
+  }
+
+  componentDidMount() {
+    Socket.subscribeToChat();
   }
 
   _handleUsername(text) {
