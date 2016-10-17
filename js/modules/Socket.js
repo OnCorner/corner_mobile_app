@@ -12,9 +12,13 @@ alert(io.sails.url);
 // console.log('XXX', socket);
 module.exports = {
   enterChatRoom: function(chat) {
-    io.socket.on(chat.id, function(message) {
+    // io.socket.on(chat.id, function(message) {
+    //   alert(message.text);
+    // });
+    io.socket.on('CHAT_MESSAGE', function(message) {
       alert(message.text);
     });
+    io.socket.get('/chat/joinRoom', chat);
     // alert("got to subscribe");
     // io.socket.on('connect', function(data) {
     //   socket.request('/user', {}, function(users) {
