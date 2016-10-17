@@ -27,26 +27,17 @@ import Shop from './components/Shop'
 import Settings from './components/Settings'
 import Item from './components/Item'
 import Group from './components/Group'
+import Inventory from './components/Inventory'
+import Inbox from './components/Inbox'
+import Transactions from './components/Transactions'
 
 const RouterWithRedux = connect()(Router)
 const store = configureStore()
 
 export default class App extends Component {
-
-  // <Scene
-  //   component={Home}
-  //   initial={true}
-  //   key='home'
-  //   sceneStyle={s.bgColor}
-  //   title='Home'
-  //   type='reset'
-  // >
-  //   <Scene
-  //     component={Item}
-  //     key='item'
-  //     sceneStyle={s.bgColor}
-  //   />
-  // </Scene>
+  constructor() {
+    super()
+  }
 
   render() {
 
@@ -78,6 +69,7 @@ export default class App extends Component {
                   component={Item}
                   direction='vertical'
                   key='item'
+                  navigationBarStyle={s.transNavbar}
                   sceneStyle={s.bgColor}
                 />
                 <Scene
@@ -92,6 +84,27 @@ export default class App extends Component {
                   key='discover'
                   sceneStyle={s.bgColor}
                   title='Discover'
+                  type='reset'
+                />
+                <Scene
+                  component={Inbox}
+                  key='inbox'
+                  sceneStyle={s.bgColor}
+                  title='Inbox'
+                  type='reset'
+                />
+                <Scene
+                  component={Transactions}
+                  key='transactions'
+                  sceneStyle={s.bgColor}
+                  title='Transactions'
+                  type='reset'
+                />
+                <Scene
+                  component={Inventory}
+                  key='inventory'
+                  sceneStyle={s.bgColor}
+                  title='Inventory'
                   type='reset'
                 />
                 <Scene

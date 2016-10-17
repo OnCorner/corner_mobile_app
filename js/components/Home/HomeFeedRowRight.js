@@ -52,14 +52,14 @@ export default class HomeFeedRowRight extends Component {
             </View>
             <View style={{flexDirection: 'row'}}>
               <TouchableHighlight
-                underlayColor='transparent'
                 onPress={Actions.discover}
+                underlayColor='transparent'
               >
                 <Text style={styles.contactButton}>Contact</Text>
               </TouchableHighlight>
               <TouchableHighlight
-              underlayColor='transparent'
-               onPress={this._buyPressed}
+                onPress={() => Actions.item({rowData})}
+                underlayColor='transparent'
               >
                 <Text style={styles.buyButton}>Buy</Text>
               </TouchableHighlight>
@@ -149,3 +149,6 @@ const styles = StyleSheet.create({
     padding: 15
   },
 })
+
+//Style modification
+//Use rowData.user

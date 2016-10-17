@@ -561,3 +561,4 @@ const styles = StyleSheet.create({
 //Style modification
 //Style text input, make it look like keep typing probably switch textAlign only to left
 //Add social media sharing
+//Add picker for category and search bar functionality for groups

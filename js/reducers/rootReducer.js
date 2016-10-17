@@ -11,6 +11,7 @@ import discover, * as fromDiscover from './discoverReducer'
 import group, * as fromGroup from './groupReducer'
 import shop, * as fromShop from './shopReducer'
 import home, * as fromHome from './homeReducer'
+import inventory, * as fromInventory from './inventoryReducer'
 
 export default combineReducers({
   nav,
@@ -24,6 +25,7 @@ export default combineReducers({
   group,
   shop,
   home,
+  inventory,
 })
 
 //Like getNav:nav
@@ -38,3 +40,4 @@ export const getDiscover = (state) => fromDiscover.getDiscover(state.discover)
 export const getGroup = (state) => fromGroup.getGroup(state.group)
 export const getShop = (state) => fromShop.getShop(state.shop)
 export const getHome = (state) => fromHome.getHome(state.home)
+export const getInventory = (state) => fromInventory.getInventory(state.inventory)

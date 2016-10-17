@@ -10,12 +10,12 @@ import {
   TouchableHighlight,
   Dimensions
 } from 'react-native';
-import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
+import TabBar from '../../elements/TabBar'
 import ShopItems from './ShopItems'
 import ShopFollowing from './ShopFollowing'
 import ShopRating from './ShopRating'
-import ShopTabBar from './ShopTabBar'
 
 var width = Dimensions.get('window').width;
 
@@ -26,14 +26,11 @@ export default class Shop extends Component {
   }
 
   componentWillMount() {
-    console.log(']]]].........> this shop items ', this.props.user.items)
     this.props.populateShopItems(this.props.user.items)
   }
 
   render() {
     const {shopItems} = this.props
-
-    console.log('EVERYTHING DAT BEING PASSED INTO SHOP ', this.props)
 
     return (
       <View style={styles.container}>
@@ -50,13 +47,10 @@ export default class Shop extends Component {
         </View>
         <ScrollableTabView
           renderTabBar={() =>
-            <ShopTabBar/>
+            <TabBar/>
           }
           scrollWithoutAnimation={true}
-          tabBarTextStyle={{
-            fontFamily: 'Helvetica Neue',
-            fontSize: 13
-          }}
+          tabBarTextStyle={styles.tabBarText}
         >
           <ShopItems tabLabel='Items' shopItems={shopItems}/>
           <ShopFollowing tabLabel='Following'/>
@@ -68,10 +62,24 @@ export default class Shop extends Component {
 }
 
 const styles = StyleSheet.create({
-  separator: {
-    height: 0.5,
-    backgroundColor: '#dddddd',
+  container: {
+    flex: 1,
+    marginTop: 55,
+    backgroundColor: 'black',
+  },
+  coverPhoto: {
+    width: width,
+    height: 160,
+  },
+  followButton: {
+    color: '#AD985E',
+    fontSize: 13,
+    fontFamily: 'Helvetica Neue',
     marginBottom: 15,
+    fontWeight: 'bold',
+  },
+  userInfo: {
+    padding: 15,
   },
   userName: {
     color: 'white',
@@ -85,64 +93,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica Neue',
     marginBottom: 5,
   },
+  separator: {
+    height: 0.5,
+    backgroundColor: '#dddddd',
+    marginBottom: 15,
+  },
   shopDetail: {
     color: '#999999',
     fontSize: 13,
     fontFamily: 'Helvetica Neue',
   },
-  upperContainer: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    marginTop: 55,
-    backgroundColor: 'black',
-  },
-  bottomContainer: {
-    flex: 2,
-  },
-  userInfo: {
-    padding: 15,
-  },
-  shopInfo: {
-    flex: 2,
-  },
-  profileImg: {
-    width: 100,
-    height: 100,
-  },
-  coverPhoto: {
-    width: width,
-    height: 160,
-  },
-  followButton: {
-    color: '#AD985E',
-    fontSize: 13,
+  tabBarText: {
     fontFamily: 'Helvetica Neue',
-    marginBottom: 15,
-    fontWeight: 'bold',
-  },
-  textBold: {
-    color: 'red',
     fontSize: 13,
-    fontFamily: 'Helvetica Neue',
-  },
-  text: {
-    marginLeft: 80,
-    color: 'red',
-    fontSize: 13,
-    fontFamily: 'Helvetica Neue',
-    marginTop: 5,
-  },
-  textSecond: {
-    marginLeft: 80,
-    color: 'red',
-    fontSize: 13,
-    fontFamily: 'Helvetica Neue',
-  },
-  itemImage: {
-    flex: 1,
-    width: null,
-    height: null,
-  },
+  }
 })

@@ -41,7 +41,7 @@ export default class DiscoverRowRight extends Component {
                 <Text style={styles.likeButton}>Like</Text>
               </TouchableHighlight>
               <TouchableHighlight
-              underlayColor='transparent'
+                underlayColor='transparent'
               >
                 <Text style={styles.followButton}>Follow</Text>
               </TouchableHighlight>
