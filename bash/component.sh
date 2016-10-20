@@ -21,6 +21,8 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
+  Stylesheet,
+  TouchableHighlight
 } from 'react-native'
 
 export default class $component extends Component {

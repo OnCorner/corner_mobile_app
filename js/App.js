@@ -15,6 +15,7 @@ import {
 import configureStore from './store/configureStore'
 import s from '../public/assets/styles/global'
 import Login from './components/Login'
+import ChatTest from './components/ChatTest'
 import Register from './components/Register'
 import Home from './components/Home'
 import Interest from './components/Interest'
@@ -77,6 +78,13 @@ export default class App extends Component {
                   key='shop'
                   sceneStyle={s.bgColor}
                   title='Shop'
+                  type='reset'
+                />
+                <ChatTest
+                  component={ChatTest}
+                  key='chattest'
+                  sceneStyle={s.bgColor}
+                  title='ChatTest'
                   type='reset'
                 />
                 <Scene

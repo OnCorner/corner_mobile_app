@@ -8,17 +8,18 @@ var io = sailsIOClient(socketIOClient);
 // var io = socketIOClient;
 io.sails.url = Url.localhost;
 
-alert(io.sails.url);
+// alert(io.sails.url);
 // console.log('XXX', socket);
 module.exports = {
-  enterChatRoom: function(chat) {
+  enterChatRoom: function(chat, cb) {
     // io.socket.on(chat.id, function(message) {
     //   alert(message.text);
     // });
     io.socket.on('CHAT_MESSAGE', function(message) {
-      alert(message.text);
+      // alert(message.text);
+      cb(message);
     });
-    io.socket.get('/chat/joinRoom', chat);
+    io.socket.get('/chat/joinRoom', {chat: chat});
     // alert("got to subscribe");
     // io.socket.on('connect', function(data) {
     //   socket.request('/user', {}, function(users) {
@@ -33,7 +34,7 @@ module.exports = {
   },
   testMessage: function() {
     io.socket.on('message', function(data) {
-      alert(data.message);
+      // alert(data.message);
     });
   }
 };

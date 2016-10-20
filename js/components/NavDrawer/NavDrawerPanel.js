@@ -54,6 +54,11 @@ const NavDrawerPanel = (props, context) => {
           Edit Profile
         </Text>
       </TouchableHighlight>
+      <TouchableHighlight onPress={() => {drawer.close(); Actions.chattest();}}>
+        <Text style={[styles.button, {marginBottom: 15}]}>
+          Chat Test
+        </Text>
+      </TouchableHighlight>
       <TouchableHighlight onPress={() => {drawer.close(); Actions.settings();}}>
         <Text style={styles.button}>
           Settings
